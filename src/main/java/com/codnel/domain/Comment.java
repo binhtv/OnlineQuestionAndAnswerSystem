@@ -1,5 +1,7 @@
 package com.codnel.domain;
 
-public class Comment {
+import javax.persistence.Entity;
 
+public class Comment {
+	
 }
