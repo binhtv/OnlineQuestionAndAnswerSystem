@@ -126,6 +126,10 @@
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
 			<artifactId>jackson-jaxrs-base</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+		</dependency>
 	</dependencies>
 
 	<properties>
