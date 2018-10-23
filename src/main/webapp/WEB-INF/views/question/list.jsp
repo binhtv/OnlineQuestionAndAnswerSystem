@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
-<div class="question-list">
+<div class="question-list" id="questionList">
 	<c:forEach items="${questions}" var="question">
 		<div class="question">
 			<div class="vote-num">${question.votes} vote</div>

@@ -1,5 +1,6 @@
 package com.codnel.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +13,25 @@ import com.codnel.service.QuestionService;
 
 @Service
 @Transactional
-public class QuestionServiceImpl implements QuestionService{
-	
+public class QuestionServiceImpl implements QuestionService {
+
 	@Autowired
-	QuestionRepository questionRepo;
+	private QuestionRepository questionRepo;
 
 	@Override
 	public void addQuestion(Question question) {
-		
-		questionRepo.save(question);		
+		question.setDateTime(new Date());
+		questionRepo.save(question);
 	}
 
 	@Override
 	public Question find(int id) {
 		return questionRepo.findOne(id);
+		
 	}
 
 	@Override
 	public List<Question> getAllQuestions() {
 		return (List<Question>) questionRepo.findAll();
 	}
-	
-	
 }

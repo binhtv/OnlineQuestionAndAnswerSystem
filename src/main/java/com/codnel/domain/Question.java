@@ -1,5 +1,6 @@
 package com.codnel.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "question")
-public class Question {
+public class Question implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,7 +51,7 @@ public class Question {
 	private int votes = 0;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	private List<Answer> answers=null;
+	private List<Answer> answers = new ArrayList<>();
 
 	public int getId() {
 		return id;

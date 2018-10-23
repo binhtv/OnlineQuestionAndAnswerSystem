@@ -6,10 +6,21 @@
 
 <fieldset>
 	<h3>
-		<c:out value="${question.title }"/>
+		<c:out value="${question.title }" />
 	</h3>
 	<br>
-	
-	<c:out value="${question.details }"/>
-	<br>
+
+	<c:out value="${question.details }" />
+	<br> From :
 </fieldset>
+
+<fieldset>
+	<legend>Add an answer</legend>
+	<form method="post" id="add_answer_form">
+		<textarea id="answer_detail" name="details">
+		</textarea>
+		<br> <input type="submit" value="submit" id="add_answer"
+			onclick="addAnswer(${question.id}); return false;">
+	</form>
+</fieldset>
+
