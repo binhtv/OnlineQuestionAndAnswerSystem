@@ -51,7 +51,7 @@
 	</view-state> -->
 	
 	<end-state id="exitToWelcomePage" view="externalRedirect:welcome" />
-	<end-state id="exitToLoginPage" view="externalRedirect:login" />
+	<end-state id="exitToLoginPage" view="externalRedirect:/login" />
 
 	<view-state id="successView" view="views/success.jsp" />
 </flow>
