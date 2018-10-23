@@ -26,7 +26,7 @@ public class Answer {
 	private String details;
 
 	@NotEmpty
-	private boolean accepted;
+	private boolean accepted = false;
 
 	public int getId() {
 		return id;

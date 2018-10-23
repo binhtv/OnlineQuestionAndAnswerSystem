@@ -1,19 +1,39 @@
 package com.codnel.controller;
 
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.codnel.domain.Answer;
+import com.codnel.domain.Question;
+import com.codnel.service.AnswerService;
+import com.codnel.service.QuestionService;
+
 @Controller
 @RequestMapping("answer")
 public class AnswerController {
 	
-//	@RequestMapping(value = "/add", method=RequestMethod.POST)
-//	public String @ResponseBody addAnswer(@RequestBody )
-//	{
-////		return
-//	}
+	@Autowired
+	QuestionService questionService;
+	
+	@Autowired
+	AnswerService answerService;
+	
+	@RequestMapping(value = "/add", method=RequestMethod.POST)
+	public @ResponseBody String addAnswer(@Param("questionId") String questionId, @Param("details") String details)
+	{
+		Question question = questionService.find(Integer.valueOf(questionId));
+		Answer answer = new Answer();
+		answer.setDetails(details);
+		answer.setDateTime(new Date());
+		questionService.addAnswer(question, answer);
+		return  "Question Added";
+	}
 	
 	
 	

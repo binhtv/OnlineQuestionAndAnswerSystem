@@ -43,7 +43,7 @@ public class Question implements Serializable  {
 
 	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Topic> topics;
+	private List<Topic> topics = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User questioner=null;
@@ -124,6 +124,10 @@ public class Question implements Serializable  {
 	
 	public int getNumOfAnswers() {
 		return answers.size();
+	}
+	
+	public void addAnswer(Answer ans) {
+		this.answers.add(ans);
 	}
 
 }

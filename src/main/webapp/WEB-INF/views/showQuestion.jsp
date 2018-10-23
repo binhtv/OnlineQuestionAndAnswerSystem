@@ -16,11 +16,19 @@
 
 <fieldset>
 	<legend>Add an answer</legend>
-	<form method="post" id="add_answer_form">
+	<div id="add_answer_form">
 		<textarea id="answer_detail" name="details">
 		</textarea>
-		<br> <input type="submit" value="submit" id="add_answer"
-			onclick="addAnswer(${question.id}); return false;">
-	</form>
+		<br> <button id="add_answer"
+			onclick="addAnswer(${question.id});">Submit</button>
+	</div>
 </fieldset>
 
+<fieldset>
+	<legend>All Answers</legend>
+	<c:forEach items="${question.answers}" var="answer">
+		<fieldset>
+			${answer.details}
+		</fieldset>
+	</c:forEach>
+</fieldset>
