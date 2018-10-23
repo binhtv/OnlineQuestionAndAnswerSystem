@@ -26,11 +26,11 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public Question find(int id) {
 		return questionRepo.findOne(id);
+		
 	}
 
 	@Override
 	public List<Question> getAllQuestions() {
 		return (List<Question>) questionRepo.findAll();
 	}
-
 }

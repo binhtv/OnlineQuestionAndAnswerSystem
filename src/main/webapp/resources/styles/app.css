@@ -77,6 +77,8 @@
             margin-bottom: 0.5em; }
             .container .body .question-list .question .group-title .title a {
               text-decoration: none; }
+              .container .body .question-list .question .group-title .title a:visited {
+                text-decoration: none; }
           .container .body .question-list .question .group-title .sub-group-title {
             display: flex;
             justify-content: space-between;
