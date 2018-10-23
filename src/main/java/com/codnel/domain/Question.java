@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class Question {
 	private String details;
 
 	@NotNull
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Topic> topics;
 
 	@ManyToOne
@@ -41,7 +42,7 @@ public class Question {
 
 	private int votes = 0;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Answer> answers=null;
 
 	public int getId() {
@@ -106,6 +107,10 @@ public class Question {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+	
+	public int getNumOfAnswers() {
+		return answers.size();
 	}
 
 }

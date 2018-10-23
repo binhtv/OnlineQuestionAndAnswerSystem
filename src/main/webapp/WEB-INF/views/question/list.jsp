@@ -9,7 +9,7 @@
 	<c:forEach items="${questions}" var="question">
 		<div class="question">
 			<div class="vote-num">${question.votes} vote</div>
-			<div class="answer-num"><%-- ${fn:length(question.answers)} --%> answers</div>
+			<div class="answer-num">${fn:length(question.answers)} answers</div>
 			<div class="group-title">
 				<div class="title">
 					<a href="${question.id}">${question.title}</a>
