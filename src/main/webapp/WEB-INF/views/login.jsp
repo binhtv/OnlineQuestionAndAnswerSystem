@@ -16,7 +16,7 @@
 	</div>
 	<div id="buttons">
 		<input type="submit" name="login" value="Login" /> 
-		<input type="submit" name="register" value="Register" onclick="<spring:url value="/registerFlow" />"/>
+		<%-- <input type="submit" name="register" value="Register" onclick="<spring:url value="/registerFlow" />"/> --%>
 	</div>
 </div>
 <br/>

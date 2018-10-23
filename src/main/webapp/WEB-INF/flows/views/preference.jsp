@@ -13,26 +13,25 @@
 <body>
 	<h2>Select Preferences</h2>
 
-	<form:form action="${flowExecutionUrl}" method="post">
-			<div id="preference">
-				<label for="preference"> Preference: </label>
-				<form:select path="preference" multiple="true">
-					<form:option label="SQL" value="sql" />
-					<form:option label="Java" value="java" />
-					<form:option label="Python" value="python" />
-					<form:option label="Swift" value="swift" />
-				</form:select>
-
-			</div>
-			<div id="agreement">
-				<input type="checkbox" name="agreement" value="agreement" />
-			</div>
-			<div class="buttons">
-				<input type="submit" name="_eventId_register" value="Register" /> <input
-					type="submit" name="_eventId_back" value="Back" /> <input
-					type="submit" name="_eventId_cancel" value="Cancel" />
-			</div>
-		</form:form>
+	<form:form modelAttribute="favoriteTopic" action="${flowExecutionUrl}" method="post">
+		<div id="topicName">
+			<label for="topicName"> Favorite Topic: </label>
+			<form:select path="topicName">
+				<form:option label="SQL" value="SQL" />
+				<form:option label="Java" value="Java" />
+				<form:option label="Python" value="Python" />
+				<form:option label="Swift" value="Swift" />
+			</form:select>
+		</div>
+		<!-- <div id="agreement">
+			<input type="checkbox" name="agreement" value="agreement" />
+		</div> -->
+		<div class="buttons">
+			<input type="submit" name="_eventId_register" value="Register" /> 
+			<input	type="submit" name="_eventId_back" value="Back" />
+			<input	type="submit" name="_eventId_cancel" value="Cancel" />
+		</div>
+	</form:form>
 </body>
 </html>
 
