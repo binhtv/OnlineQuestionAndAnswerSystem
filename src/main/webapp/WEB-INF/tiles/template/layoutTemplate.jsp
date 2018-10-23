@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="resource/styles/app.css" rel="stylesheet">
+<link href="<c:url value="/resource/styles/app.css" />" rel="stylesheet">
 <c:set var="title">
 	<tiles:getAsString name="title" />
 </c:set>
@@ -38,7 +38,7 @@
 
 	</div>
 	
-	<script type="text/javascript" src="resource/scripts/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="resource/scripts/app.js"></script>
+	<script type="text/javascript" src="<c:url value="/resource/scripts/jquery-1.9.1.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resource/scripts/app.js" />"></script>
 </body>
 </html>
