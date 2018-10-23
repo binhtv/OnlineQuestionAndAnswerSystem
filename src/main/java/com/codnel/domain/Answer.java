@@ -2,6 +2,7 @@ package com.codnel.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,19 +11,20 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+@Entity(name = "answer")
 public class Answer {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@DateTimeFormat(pattern="MM/DD/YYYY'T'HH:mm:ss")
+
+	@DateTimeFormat(pattern = "MM/DD/YYYY'T'HH:mm:ss")
+	@Column(name = "date_time")
 	private Date dateTime;
-	
+
 	@NotEmpty
 	private String details;
-	
+
 	@NotEmpty
 	private boolean accepted;
 

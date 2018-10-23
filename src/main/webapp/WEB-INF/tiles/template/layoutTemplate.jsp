@@ -15,7 +15,7 @@
 <c:set var="title">
 	<tiles:getAsString name="title" />
 </c:set>
-<title><spring:message code="${title}" /></title>
+<title>${title }</title>
 
 </head>
 
@@ -25,7 +25,7 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Online Question and Answer System</h3>
+			<h3 class="text-muted"><spring:message code="layout.project.name" /></h3>
 		</div>
 
 		<div class="body">

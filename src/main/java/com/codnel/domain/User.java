@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name = "user")
 public class User {
 
 	@Id
