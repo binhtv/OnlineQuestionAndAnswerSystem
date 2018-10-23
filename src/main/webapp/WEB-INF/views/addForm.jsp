@@ -15,8 +15,7 @@
 		</p>
 		<p>
 			Topic: 
-			<form:select path="topics" multiple="true">
-				<form:options items="${allTopics }" itemValue="id" itemLabel="name"/>
+			<form:select path="topics" multiple="true" items="${allTopics}"  itemLabel="name" itemValue="id">
 			</form:select>
 		</p>
 		

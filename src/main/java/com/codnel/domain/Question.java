@@ -1,5 +1,6 @@
 package com.codnel.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -34,11 +36,11 @@ public class Question {
 	private String details;
 
 	@NotNull
-	@OneToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Topic> topics;
 
-	@ManyToOne
-	private User questioner;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private User questioner=null;
 
 	private int votes = 0;
 
@@ -82,7 +84,12 @@ public class Question {
 	}
 
 	public void setTopics(List<Topic> topics) {
-		this.topics = topics;
+//		this.topics = topics;
+		if(topics == null) {
+			this.topics = new ArrayList<Topic>();
+		} else {
+			this.topics = topics;
+		}
 	}
 
 	public User getQuestioner() {
