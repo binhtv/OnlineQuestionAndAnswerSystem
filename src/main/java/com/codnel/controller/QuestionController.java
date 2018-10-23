@@ -48,7 +48,7 @@ public class QuestionController {
 		//Send message to the channel to update the question list
 		template.convertAndSend("/topic/question/add", question);
 		System.out.println("added question" + question.getId());
-		return "redirect:/welcome";
+		return "redirect:/question/"+question.getId();
 
 	}
 

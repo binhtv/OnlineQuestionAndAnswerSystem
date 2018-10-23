@@ -1,5 +1,6 @@
 package com.codnel.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public void addQuestion(Question question) {
-
+		question.setDateTime(new Date());
 		questionRepo.save(question);
 	}
 
