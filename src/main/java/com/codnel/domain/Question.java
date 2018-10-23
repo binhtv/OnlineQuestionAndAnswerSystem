@@ -1,14 +1,17 @@
 package com.codnel.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -39,15 +42,15 @@ public class Question implements Serializable  {
 	private String details;
 
 	@NotNull
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Topic> topics;
 
-	@ManyToOne
-	private User questioner;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private User questioner=null;
 
 	private int votes = 0;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Answer> answers=null;
 
 	public int getId() {
@@ -87,7 +90,12 @@ public class Question implements Serializable  {
 	}
 
 	public void setTopics(List<Topic> topics) {
-		this.topics = topics;
+//		this.topics = topics;
+		if(topics == null) {
+			this.topics = new ArrayList<Topic>();
+		} else {
+			this.topics = topics;
+		}
 	}
 
 	public User getQuestioner() {
@@ -112,6 +120,10 @@ public class Question implements Serializable  {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+	
+	public int getNumOfAnswers() {
+		return answers.size();
 	}
 
 }

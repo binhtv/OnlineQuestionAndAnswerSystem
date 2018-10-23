@@ -9,16 +9,16 @@
 	<c:forEach items="${questions}" var="question">
 		<div class="question">
 			<div class="vote-num">${question.votes} vote</div>
-			<div class="answer-num"><%-- ${fn:length(question.answers)} --%> answers</div>
+			<div class="answer-num">${fn:length(question.answers)} answers</div>
 			<div class="group-title">
 				<div class="title">
 					<a href="${question.id}">${question.title}</a>
 				</div>
 				<div class="sub-group-title">
 					<div class="topic">
-						<%-- <c:forEach items="${question.topics}" var="topic">
+						<c:forEach items="${question.topics}" var="topic">
 							<div class="topic-item">${topic.name}</div>
-						</c:forEach>	 --%>					
+						</c:forEach>					
 					</div>
 					<div class="by-user">
 						ansered x min ago by <a href="#">Tom Drake</a>

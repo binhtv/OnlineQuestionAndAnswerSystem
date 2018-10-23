@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+						http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+
+	<var name="loginDetails" class="com.codnel.domain.LoginDetails" />
+	<var name="personalDetails" class="com.codnel.domain.PersonalDetails" />
+
+	<!-- <view-state id="loginDetailsView"
+		view="views/loginDetails.jsp" model="loginDetails">
+		<transition on="peformLoginDetails"
+			to="performLoginDetailsAction" />
+	</view-state> -->
+
+	<view-state id="loginDetailsView" view="views/loginDetails.jsp" model="loginDetails">
+		<transition on="next" to="personalDetailsView" />
+		<transition on="cancel" to="exitToWelcomePage" />
+	</view-state>
+
+	<!-- <action-state id="performLoginDetailsAction">
+		<evaluate expression="registrationControllerHelper.verifyLoginDetails(loginDetails)" 
+			/>
+		<evaluate expression="true" />
+
+		<transition on="true" to="personalDetailsView" />
+		<transition on="false" to="loginDetailsView" />
+
+	</action-state> -->
+
+	<view-state id="personalDetailsView"	view="views/personalDetails.jsp" model="personalDetails">
+		<!-- <transition on="performPersonalDetails"
+			to="performPersonalDetailsAction" /> -->
+			<transition on="next" to="exitToLoginPage" />
+			<transition on="back" to="loginDetailsView" />
+	</view-state>
+
+	<!-- <action-state id="performPersonalDetailsAction">
+		<evaluate expression="registrationControllerHelper.verifyPersonalDetails(personalDetails)" 
+			/>
+		<evaluate expression="true" />
+		<transition on="true" to="preferenceView" />
+		<transition on="false" to="personalDetailsView" />
+	</action-state> -->
+
+	<!-- <view-state id="preferenceView" view="views/preference.jsp" model="">
+		<transition on="performPreference" to="successView" />
+			<transition on="register" to="personalDetailsView" />
+			<transition on="back" to="personalDetailsView" />
+			<transition on="cancel" to="personalDetailsView" />
+	</view-state> -->
+	
+	<end-state id="exitToWelcomePage" view="externalRedirect:welcome" />
+	<end-state id="exitToLoginPage" view="externalRedirect:/login" />
+
+	<view-state id="successView" view="views/success.jsp" />
+</flow>
+
+

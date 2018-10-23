@@ -1,10 +1,8 @@
 package com.codnel.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.codnel.domain.Question;
-import com.codnel.domain.Topic;
 import com.codnel.service.QuestionService;
 import com.codnel.service.TopicService;
 
@@ -61,19 +58,19 @@ public class QuestionController {
 		return "/question/list";
 	}
 
-	@RequestMapping(value = "/testws", method = RequestMethod.GET)
-	@SendTo("/topic/question/add")
-	public Question testWeb() {
-		Question q = new Question();
-		q.setId(1);
-		q.setTitle("Test title");
-		q.setDetails("This is question detail");
-		Topic t = new Topic();
-		t.setName("Java");
-		q.setTopics(Arrays.asList(t));
-		template.convertAndSend("/topic/question/add", q);
-		return q;
-		//template.convertAndSend("/topic/question/add", q);
-		//return "/question/testws";
-	}
+//	@RequestMapping(value = "/testws", method = RequestMethod.GET)
+//	@SendTo("/topic/question/add")
+//	public Question testWeb() {
+//		Question q = new Question();
+//		q.setId(1);
+//		q.setTitle("Test title");
+//		q.setDetails("This is question detail");
+//		Topic t = new Topic();
+//		t.setName("Java");
+//		q.setTopics(Arrays.asList(t));
+//		template.convertAndSend("/topic/question/add", q);
+//		return q;
+//		//template.convertAndSend("/topic/question/add", q);
+//		//return "/question/testws";
+//	}
 }
