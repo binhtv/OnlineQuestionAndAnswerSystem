@@ -16,9 +16,9 @@
 				</div>
 				<div class="sub-group-title">
 					<div class="topic">
-						<%-- <c:forEach items="${question.topics}" var="topic">
+						<c:forEach items="${question.topics}" var="topic">
 							<div class="topic-item">${topic.name}</div>
-						</c:forEach>	 --%>					
+						</c:forEach>					
 					</div>
 					<div class="by-user">
 						ansered x min ago by <a href="#">Tom Drake</a>
