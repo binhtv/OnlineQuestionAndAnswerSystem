@@ -11,11 +11,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="resource/styles/app.css" rel="stylesheet">
+<link href="<c:url value="/resource/styles/app.css" />" rel="stylesheet">
 <c:set var="title">
 	<tiles:getAsString name="title" />
 </c:set>
-<title><spring:message code="${title}" /></title>
+<title>${title }</title>
 
 </head>
 
@@ -25,7 +25,7 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Online Question and Answer System</h3>
+			<h3 class="text-muted"><spring:message code="layout.project.name" /></h3>
 		</div>
 
 		<div class="body">
@@ -38,7 +38,7 @@
 
 	</div>
 	
-	<script type="text/javascript" src="resource/scripts/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="resource/scripts/app.js"></script>
+	<script type="text/javascript" src="<c:url value="/resource/scripts/jquery-1.9.1.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resource/scripts/app.js" />"></script>
 </body>
 </html>

@@ -6,8 +6,8 @@
 	
 	<definition name="baseLayout" template="/WEB-INF/tiles/template/layoutTemplate.jsp">
 		<put-attribute name="title" value="Sample Title" />
-		<put-attribute name="heading" value="" />
-		<put-attribute name="tagline" value="default.tagline" />
+		<put-attribute name="heading" value="Sample Heading" />
+		<put-attribute name="tagline" value="Sample Tagline" />
  		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
@@ -29,11 +29,11 @@
      product/products accesses views/product folder for product JSP location
 COMPARE WITH webstore08
  -->
- 	<definition name="*/*" extends="baseLayout">
-		<put-attribute name="title" value="{2}.title" />
-		<put-attribute name="heading" value="{2}.heading" />
-		<put-attribute name="tagline" value="{2}.tagline" />
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	<definition name="/question/list" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/question/list.jsp" />
+	</definition>
+ 	<definition name="*" extends="baseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 
 </tiles-definitions>

@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name = "user")
 public class User {
 	private static final long serialVersionUID = 1L;
 

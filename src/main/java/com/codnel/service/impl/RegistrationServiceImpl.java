@@ -1,4 +1,4 @@
-package com.codnel.serviceimpl;
+package com.codnel.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

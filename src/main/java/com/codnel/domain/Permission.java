@@ -7,16 +7,15 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name = "permission")
 public class Permission {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@NotEmpty
 	private String name;
-	
 
 	public int getId() {
 		return id;

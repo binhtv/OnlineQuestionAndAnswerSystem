@@ -10,16 +10,16 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name = "role")
 public class Role {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@NotEmpty
 	private String name;
-	
+
 	@OneToMany
 	private List<Permission> permissions;
 
@@ -46,6 +46,5 @@ public class Role {
 	public void setPermissions(List<Permission> permissions) {
 		this.permissions = permissions;
 	}
-	
-	
+
 }

@@ -1,12 +1,16 @@
 package com.codnel.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -14,33 +18,34 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+@Entity(name = "question")
 public class Question {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@DateTimeFormat(pattern="MM/DD/YYYY'T'HH:mm:ss")
+
+	@DateTimeFormat(pattern = "MM/DD/YYYY'T'HH:mm:ss")
+	@Column(name = "date_time")
 	private Date dateTime;
-	
+
 	@NotEmpty
 	private String title;
-	
+
 	@NotEmpty
 	private String details;
-	
+
 	@NotNull
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Topic> topics;
-	
-	@ManyToOne
-	private User questioner;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private User questioner=null;
+
 	private int votes = 0;
-	
-	@OneToMany
-	private List<Answer> answers;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Answer> answers=null;
 
 	public int getId() {
 		return id;
@@ -73,13 +78,18 @@ public class Question {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	
+
 	public List<Topic> getTopics() {
 		return topics;
 	}
 
 	public void setTopics(List<Topic> topics) {
-		this.topics = topics;
+//		this.topics = topics;
+		if(topics == null) {
+			this.topics = new ArrayList<Topic>();
+		} else {
+			this.topics = topics;
+		}
 	}
 
 	public User getQuestioner() {
@@ -106,4 +116,8 @@ public class Question {
 		this.answers = answers;
 	}
 	
+	public int getNumOfAnswers() {
+		return answers.size();
+	}
+
 }
