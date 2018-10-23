@@ -8,7 +8,7 @@
 <div>
 	<div id="username">
 		<label for="userName"> Username: </label>
-		<input type="submit" name="username" placeholder="enter your username"/>
+		<input type="text" name="username" placeholder="enter your username"/>
 	</div>
 	<div id="password">
 		<label for="password">Password: </label>
