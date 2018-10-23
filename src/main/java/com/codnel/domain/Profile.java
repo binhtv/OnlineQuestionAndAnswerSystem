@@ -13,18 +13,18 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+@Entity(name = "profile")
 public class Profile {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@Column(length = 16)
+
+	@Column(name = "first_name", length = 16)
 	@NotEmpty
 	private String firstName;
 
-	@Column(length = 16)
+	@Column(name = "last_name", length = 16)
 	@NotEmpty
 	private String lastName;
 
@@ -34,6 +34,7 @@ public class Profile {
 
 	@NotNull
 	@DateTimeFormat(pattern = "MM/DD/YYY")
+	@Column(name = "birth_day")
 	private Date birthDay;
 
 	public String getFirstName() {

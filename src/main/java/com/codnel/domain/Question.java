@@ -3,6 +3,7 @@ package com.codnel.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,31 +15,32 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+@Entity(name = "question")
 public class Question {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@DateTimeFormat(pattern="MM/DD/YYYY'T'HH:mm:ss")
+
+	@DateTimeFormat(pattern = "MM/DD/YYYY'T'HH:mm:ss")
+	@Column(name = "date_time")
 	private Date dateTime;
-	
+
 	@NotEmpty
 	private String title;
-	
+
 	@NotEmpty
 	private String details;
-	
+
 	@NotNull
 	@OneToMany
 	private List<Topic> topics;
-	
+
 	@ManyToOne
-	private User questioner=null;
-	
+	private User questioner;
+
 	private int votes = 0;
-	
+
 	@OneToMany
 	private List<Answer> answers=null;
 
@@ -73,7 +75,7 @@ public class Question {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	
+
 	public List<Topic> getTopics() {
 		return topics;
 	}
@@ -105,5 +107,5 @@ public class Question {
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	}
-	
+
 }

@@ -7,12 +7,12 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name = "topic")
 public class Topic {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@NotEmpty
 	private String name;
 
@@ -31,6 +31,5 @@ public class Topic {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 }

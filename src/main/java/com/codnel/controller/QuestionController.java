@@ -44,5 +44,11 @@ public class QuestionController {
 		questionService.addQuestion(question);
 		System.out.println("added question" + question.getId());
 		return "redirect:/welcome";
+
+	}
+	
+	@RequestMapping(value = { "/list" }, method = RequestMethod.GET)
+	public String listQuestions() {
+		return "/question/list";
 	}
 }
