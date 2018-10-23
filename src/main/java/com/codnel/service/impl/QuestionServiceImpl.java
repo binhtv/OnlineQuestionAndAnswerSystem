@@ -17,6 +17,7 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Override
 	public void addQuestion(Question question) {
+		
 		questionRepo.save(question);		
 	}
 

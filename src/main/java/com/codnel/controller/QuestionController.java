@@ -43,6 +43,6 @@ public class QuestionController {
 	{
 		questionService.addQuestion(question);
 		System.out.println("added question" + question.getId());
-		return "/welcome";
+		return "redirect:/welcome";
 	}
 }

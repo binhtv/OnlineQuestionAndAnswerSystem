@@ -35,12 +35,12 @@ public class Question {
 	private List<Topic> topics;
 	
 	@ManyToOne
-	private User questioner;
+	private User questioner=null;
 	
 	private int votes = 0;
 	
 	@OneToMany
-	private List<Answer> answers;
+	private List<Answer> answers=null;
 
 	public int getId() {
 		return id;

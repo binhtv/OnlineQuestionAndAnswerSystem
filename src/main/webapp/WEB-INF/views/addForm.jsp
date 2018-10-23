@@ -6,7 +6,7 @@
 
 <fieldset>
 	<legend>Add a Question</legend>
-	<form:form modelAttribute="question" action="/" method="post">
+	<form:form modelAttribute="question" action="add" method="POST">
 		<p>
 			Title: <form:input path="title"/>
 		</p>
