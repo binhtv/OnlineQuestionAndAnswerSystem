@@ -51,7 +51,7 @@ public class Question implements Serializable  {
 	private int votes = 0;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	private List<Answer> answers=null;
+	private List<Answer> answers = new ArrayList<>();
 
 	public int getId() {
 		return id;

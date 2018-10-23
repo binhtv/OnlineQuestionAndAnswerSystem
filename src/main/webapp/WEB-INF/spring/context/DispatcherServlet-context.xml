@@ -18,8 +18,7 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2" />
 	</bean>
-	<mvc:annotation-driven validator="validator"
-		conversion-service="conversionService" />
+	<mvc:annotation-driven validator="validator" conversion-service="conversionService" />
 
 	<import resource="../../flows/flow-definition.xml" />
 

@@ -40,6 +40,7 @@
 	
 	<script type="text/javascript" src="<c:url value="/resource/scripts/lib/sockjs-0.3.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resource/scripts/lib/jquery-1.9.1.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resource/scripts/lib/jquery-ui.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resource/scripts/lib/stomp.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resource/scripts/app.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resource/scripts/question/question.js" />"></script>

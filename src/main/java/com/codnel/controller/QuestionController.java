@@ -45,7 +45,8 @@ public class QuestionController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addQuestion(@ModelAttribute("question") Question question) {
 		questionService.addQuestion(question);
-		// template.convertAndSend("/topic/question/add", question);
+		//Send message to the channel to update the question list
+		template.convertAndSend("/topic/question/add", question);
 		System.out.println("added question" + question.getId());
 		return "redirect:/welcome";
 
@@ -58,19 +59,19 @@ public class QuestionController {
 		return "/question/list";
 	}
 
-//	@RequestMapping(value = "/testws", method = RequestMethod.GET)
-//	@SendTo("/topic/question/add")
-//	public Question testWeb() {
-//		Question q = new Question();
-//		q.setId(1);
-//		q.setTitle("Test title");
-//		q.setDetails("This is question detail");
-//		Topic t = new Topic();
-//		t.setName("Java");
-//		q.setTopics(Arrays.asList(t));
-//		template.convertAndSend("/topic/question/add", q);
-//		return q;
-//		//template.convertAndSend("/topic/question/add", q);
-//		//return "/question/testws";
-//	}
+	// @RequestMapping(value = "/testws", method = RequestMethod.GET)
+	// @SendTo("/topic/question/add")
+	// public Question testWeb() {
+	// Question q = new Question();
+	// q.setId(1);
+	// q.setTitle("Test title");
+	// q.setDetails("This is question detail");
+	// Topic t = new Topic();
+	// t.setName("Java");
+	// q.setTopics(Arrays.asList(t));
+	// template.convertAndSend("/topic/question/add", q);
+	// return q;
+	// //template.convertAndSend("/topic/question/add", q);
+	// //return "/question/testws";
+	// }
 }
