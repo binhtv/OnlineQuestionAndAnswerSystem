@@ -12,15 +12,15 @@ import com.codnel.service.QuestionService;
 
 @Service
 @Transactional
-public class QuestionServiceImpl implements QuestionService{
-	
+public class QuestionServiceImpl implements QuestionService {
+
 	@Autowired
 	QuestionRepository questionRepo;
 
 	@Override
 	public void addQuestion(Question question) {
-		
-		questionRepo.save(question);		
+
+		questionRepo.save(question);
 	}
 
 	@Override
@@ -32,6 +32,5 @@ public class QuestionServiceImpl implements QuestionService{
 	public List<Question> getAllQuestions() {
 		return (List<Question>) questionRepo.findAll();
 	}
-	
-	
+
 }

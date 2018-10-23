@@ -50,7 +50,7 @@ public class QuestionController {
 	{
 		questionService.addQuestion(question);
 		System.out.println("added question" + question.getId());
-		return "redirect:/welcome";
+		return "redirect:/question/"+question.getId();
 
 	}
 	
