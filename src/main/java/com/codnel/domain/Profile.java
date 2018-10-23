@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,17 +24,22 @@ public class Profile {
 
 	@Column(name = "first_name", length = 16)
 	@NotEmpty
+	@Size(min=5, max=25, message= "{Size.firstName}")
 	private String firstName;
 
 	@Column(name = "last_name", length = 16)
 	@NotEmpty
+	@Size(min=5, max=25, message= "{Size.lastName}")
 	private String lastName;
+	
+	private String gender;
 
 	@Email
 	@NotEmpty
 	private String email;
 
 	@NotNull
+	@Past
 	@DateTimeFormat(pattern = "MM/DD/YYY")
 	@Column(name = "birth_day")
 	private Date birthDay;
@@ -51,6 +58,13 @@ public class Profile {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public Date getBirthDay() {

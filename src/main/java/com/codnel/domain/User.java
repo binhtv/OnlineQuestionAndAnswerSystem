@@ -27,15 +27,7 @@ public class User {
 	@NotEmpty
 	@Size(min = 5, message = "{Size.username}")
 	private String username;
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
+	
 	@NotEmpty
 	private String password;
 
@@ -52,6 +44,14 @@ public class User {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Role role;
+	
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
 	public List<Topic> getFollowingTopics() {
 		return followingTopics;
