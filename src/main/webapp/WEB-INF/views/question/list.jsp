@@ -7,8 +7,18 @@
  
 <div class="question-list" id="questionList">
 	<c:forEach items="${questions}" var="question">
-		<div class="question">
-			<div class="vote-num">${question.votes} <spring:message code="question.list.vote" /></div>
+		<c:choose>
+			<c:when test="${question.votes >= 5}">
+				<c:set var="highVoteClass" value="high-vote"/>
+			</c:when>
+			<c:otherwise>
+				<c:set var="highVoteClass" value=""/>
+			</c:otherwise>
+		</c:choose>
+		<div class="question ${highVoteClass }" id="question_${question.id}">
+			<a href="javascript:void(0)" class="vote-up-icon voteUpQuestion" data-qid="${question.id}">
+			</a>
+			<div class="vote-num"><span id="vote_${question.id}">${question.votes}</span> <spring:message code="question.list.vote" /></div>
 			<div class="answer-num">${fn:length(question.answers)} <spring:message code="question.list.answer" /></div>
 			<div class="group-title">
 				<div class="title">
@@ -17,11 +27,11 @@
 				<div class="sub-group-title">
 					<div class="topic">
 						<c:forEach items="${question.topics}" var="topic">
-							<div class="topic-item">${topic.name}</div>
+							<div class="topic-item">${topic.topicName}</div>
 						</c:forEach>					
 					</div>
 					<div class="by-user">
-						<spring:message code="question.list.at" /> by <a href="#">Tom Drake</a>
+						<spring:message code="question.list.at" /> ${question.dateTime} by <a href="#">Tom Drake</a>
 					</div>
 				</div>
 			</div>
