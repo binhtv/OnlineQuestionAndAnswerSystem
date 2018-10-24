@@ -25,8 +25,17 @@ public class Answer {
 	@NotEmpty
 	private String details;
 
-	@NotEmpty
-	private boolean accepted;
+	private boolean accepted = false;
+	
+	private int votes = 0;
+
+	public int getVotes() {
+		return votes;
+	}
+
+	public void setVotes(int votes) {
+		this.votes = votes;
+	}
 
 	public int getId() {
 		return id;
@@ -58,6 +67,24 @@ public class Answer {
 
 	public void setAccepted(boolean accepted) {
 		this.accepted = accepted;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 
 }

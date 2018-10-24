@@ -23,7 +23,7 @@ INSERT INTO role_permission VALUES (1,1);
 -- VALUES (2,1);
 
 -- PROFILE
-INSERT INTO Profile VALUES (1, "2018/08/08", "asd@gmail.com", "abc", "def");
+INSERT INTO Profile VALUES (1, "2018/08/08", "asd@gmail.com", "abc", "male","sad");
 
 -- USER
 INSERT INTO User VALUES (NULL, "123", "abc", 1, 1);
@@ -38,9 +38,9 @@ INSERT INTO question_topic VALUES (1,2);
 INSERT INTO question_topic VALUES (2,3);
 
 -- ANSWER
-INSERT INTO answer VALUES (NULL, false, '2018-10-03 00:00:00' , "sfsdf");
+-- INSERT INTO answer VALUES (NULL, false, '2018-10-03 00:00:00' , "sfsdf");
 
 -- QUESTION - ANSWER
-INSERT INTO question_answer  VALUES (1,1);
+-- INSERT INTO question_answer  VALUES (1,1);
 
 

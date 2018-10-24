@@ -107,22 +107,41 @@
 
             .question {
                 display: flex;
-                border-bottom: 1px solid #eff0f1;
+                border-bottom: 1px solid #b3b0af;
                 align-items: center;
                 height: 59px;
                 justify-content: space-between;
                 padding: 5px 10px;
 
+                &.high-vote {
+                    background: antiquewhite;
+                    font-weight: bold;
+                }
+
+                .vote-up-icon {
+                    width: 20px;
+                    height: 20px;
+                    background: url('/OnlineQuestionAndAnswerSystem/resource/images/thumbs-up-regular.svg');
+                    &.voted, &:hover {
+                        background: url('/OnlineQuestionAndAnswerSystem/resource/images/thumbs-up-solid.svg');
+                    }
+                    &.voted {
+                        cursor: default;
+                    }
+                }
+
                 .vote-num {
                     text-align: center;
                     width: 30px;
                     color: #848d95;
+                    font-size: 13px;
                 }
 
                 .answer-num {
                     text-align: center;
-                    width: 50px;
+                    width: 30px;
                     color: #848d95;
+                    font-size: 13px;
                 }
 
                 .group-title {

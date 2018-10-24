@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -42,15 +44,16 @@ public class Question implements Serializable  {
 	private String details;
 
 	@NotNull
-	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Topic> topics;
+	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	private List<Topic> topics = new ArrayList<>();
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private User questioner=null;
 
 	private int votes = 0;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name = "question_id")
 	private List<Answer> answers = new ArrayList<>();
 
 	public int getId() {
@@ -124,6 +127,10 @@ public class Question implements Serializable  {
 	
 	public int getNumOfAnswers() {
 		return answers.size();
+	}
+	
+	public void addAnswer(Answer ans) {
+		this.answers.add(ans);
 	}
 
 }

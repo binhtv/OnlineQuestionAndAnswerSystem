@@ -70,19 +70,32 @@
       margin-top: 50px; }
       .container .body .question-list .question {
         display: flex;
-        border-bottom: 1px solid #eff0f1;
+        border-bottom: 1px solid #b3b0af;
         align-items: center;
         height: 59px;
         justify-content: space-between;
         padding: 5px 10px; }
+        .container .body .question-list .question.high-vote {
+          background: antiquewhite;
+          font-weight: bold; }
+        .container .body .question-list .question .vote-up-icon {
+          width: 20px;
+          height: 20px;
+          background: url("/OnlineQuestionAndAnswerSystem/resource/images/thumbs-up-regular.svg"); }
+          .container .body .question-list .question .vote-up-icon.voted, .container .body .question-list .question .vote-up-icon:hover {
+            background: url("/OnlineQuestionAndAnswerSystem/resource/images/thumbs-up-solid.svg"); }
+          .container .body .question-list .question .vote-up-icon.voted {
+            cursor: default; }
         .container .body .question-list .question .vote-num {
           text-align: center;
           width: 30px;
-          color: #848d95; }
+          color: #848d95;
+          font-size: 13px; }
         .container .body .question-list .question .answer-num {
           text-align: center;
-          width: 50px;
-          color: #848d95; }
+          width: 30px;
+          color: #848d95;
+          font-size: 13px; }
         .container .body .question-list .question .group-title {
           flex-grow: 0.7;
           display: flex;

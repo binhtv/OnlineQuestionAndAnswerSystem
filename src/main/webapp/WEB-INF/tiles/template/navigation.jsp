@@ -13,8 +13,7 @@
 </li>
 <li>
 <a href="<spring:url value="/question/list" />">
-<spring:message
-			code="layout.navigation.home" /> <spring:message code="layout.navigation.latestQuestion"/></a></li>
+<spring:message code="layout.navigation.latestQuestion"/></a></li>
 <li>
 <a href="<spring:url value="/topics/" />">
 <spring:message
