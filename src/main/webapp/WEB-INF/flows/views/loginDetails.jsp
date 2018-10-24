@@ -20,27 +20,29 @@
 		<%-- <input type="hidden" name="_eventId" value="peformLoginDetails">
 		<input type="hidden" name="_flowExecutionKey"
 			value="${flowExecutionKey}" /> --%>
+		
 
 		<div class="errorSummary">
 			<form:errors path="*" />
 		</div>
 		<div id="username">
-			<label for="userName"> Username: </label>
+			<label for="userName"> <spring:message code="username" />: </label>
 			<form:input path="userName" />
-			<form:errors path="userName" />
+			<div>
+				<form:errors path="userName" />
+			</div>
 		</div>
 		<div id="password">
-			<label for="password">Password: </label>
+			<label for="password"><spring:message code="password" />: </label>
 			<form:password path="password" />
+			<div>
+				<form:errors path="password" />
+			</div>
 		</div>
-		<!-- <div class="buttons">
-			<input type="submit" value="Back" /> <input type="submit"
-				value="Next" />
-		</div> -->
-
-		<input type="submit" name="_eventId_next" value="Next" />
-		<input type="submit" name="_eventId_cancel" value="Cancel" />
-
+		<div>
+			<input type="submit" name="_eventId_next" value="Next" />
+			<input type="submit" name="_eventId_cancel" value="Cancel" />
+		</div>
 		
 	</form:form>
 </body>

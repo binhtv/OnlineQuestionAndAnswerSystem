@@ -39,16 +39,15 @@ public class RegistrationServiceImpl implements RegistrationService{
 	}
 	
 	public void registerUser() {
-	
 		Profile userProfile = new Profile();
 		userProfile.setFirstName(this.personalDetails.getFirstName());
 		userProfile.setLastName(this.personalDetails.getLastName());
-		userProfile.setBirthDay(this.personalDetails.getBirthDate());
+//		userProfile.setBirthDay(this.personalDetails.getBirthDate());
 		userProfile.setEmail(this.personalDetails.getEmail());
 		userProfile.setGender(this.personalDetails.getGender());
 		
 		Role userRole = new Role();
-		userRole.setName("ROLE_USER");
+		userRole.setRole("ROLE_USER");
 		
 		List<Topic> followingTopics = new ArrayList<Topic>();
 		followingTopics.add(favoriteTopic);
@@ -57,7 +56,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 		newUser.setUsername(this.loginDetails.getUserName());
 		newUser.setPassword(this.loginDetails.getPassword());
 		newUser.setFollowingTopics(followingTopics);
-		newUser.setProfile(userProfile);
+//		newUser.setProfile(userProfile);
 		
 		registrationRepository.save(newUser);
 	}

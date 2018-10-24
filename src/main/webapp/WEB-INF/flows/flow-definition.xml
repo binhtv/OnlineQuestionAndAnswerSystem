@@ -17,10 +17,19 @@
 
 	<flow:flow-executor id="registerFlowExecutor"	flow-registry="registerFlowRegistry" />
 
-	<flow:flow-registry id="registerFlowRegistry" base-path="/WEB-INF/flows">
+	<flow:flow-registry id="registerFlowRegistry" flow-builder-services="flowBuilderServices" base-path="/WEB-INF/flows">
 		<flow:flow-location id="registerFlow"	path="/register-flow.xml"></flow:flow-location>
 	</flow:flow-registry>
 	
-
+	<flow:flow-builder-services id="flowBuilderServices" validator="validator" />
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames"
+			value="classpath:errorMessages,classpath:messages" />
+	</bean>
 </beans>
 		

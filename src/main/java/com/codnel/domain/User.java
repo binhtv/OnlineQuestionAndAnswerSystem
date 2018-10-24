@@ -1,5 +1,6 @@
 package com.codnel.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -31,10 +33,12 @@ public class User {
 	
 	@NotEmpty
 	private String password;
-
-	@Valid
-	@OneToOne(cascade = CascadeType.ALL)
-	private Profile profile;
+	
+	private Boolean enabled;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="userid") 
+	List<Role> roles = new ArrayList<Role>();
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "user_topic")
@@ -42,17 +46,6 @@ public class User {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Question> questions;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	private Role role;
-	
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
 
 	public List<Topic> getFollowingTopics() {
 		return followingTopics;
@@ -94,12 +87,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Profile getProfile() {
-		return profile;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
-
 }

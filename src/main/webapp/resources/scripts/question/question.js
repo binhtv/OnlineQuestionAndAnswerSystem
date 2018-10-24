@@ -67,7 +67,7 @@
 	// Callback function to be called when stomp client could not connect to
 	// server
 	var errorCallback = function(error) {
-		alert(error.headers.message);
+		console.log(error);
 	};
 
 	stompClient.connect("guest", "guest", connectCallback, errorCallback);

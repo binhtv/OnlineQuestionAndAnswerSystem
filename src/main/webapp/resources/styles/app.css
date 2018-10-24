@@ -31,6 +31,14 @@
           text-decoration: none; }
     .container .body .main-content {
       width: 100%; }
+      .container .body .main-content .ask-a-question-btn {
+        display: block;
+        text-align: center;
+        width: 200px;
+        background: aliceblue;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccdff3; }
   .container .header {
     padding-bottom: 20px;
     border-bottom: 1px solid #e5e5e5; }
@@ -93,7 +101,7 @@
           font-size: 13px; }
         .container .body .question-list .question .answer-num {
           text-align: center;
-          width: 30px;
+          width: 50px;
           color: #848d95;
           font-size: 13px; }
         .container .body .question-list .question .group-title {

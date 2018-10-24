@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -40,9 +43,13 @@ public class Profile {
 
 	@NotNull
 	@Past
-	@DateTimeFormat(pattern = "MM/DD/YYY")
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	@Column(name = "birth_day")
 	private Date birthDay;
+	
+	@OneToOne(fetch=FetchType.LAZY) 
+ 	@JoinColumn(name="userid") 
+ 	private User user;
 
 	public String getFirstName() {
 		return firstName;
@@ -81,5 +88,13 @@ public class Profile {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
