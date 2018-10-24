@@ -3,6 +3,8 @@ package com.codnel.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
@@ -33,8 +35,6 @@ public class QuestionController {
 
 	@Autowired
 	private SimpMessagingTemplate template;
-	
-	private Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getQuestionForm(@ModelAttribute("question") Question question, Model model) {
@@ -49,12 +49,6 @@ public class QuestionController {
 		model.addAttribute("question", question);
 		List<Answer> answers = question.getAnswers();
 		model.addAttribute("answers", answers.stream().distinct().collect(Collectors.toList()));
-		
-		if(auth!=null)
-		{
-			User user = (User)auth.getPrincipal();
-			System.out.println(user.getUsername());
-		}
 		return "showQuestion";
 	}
 
