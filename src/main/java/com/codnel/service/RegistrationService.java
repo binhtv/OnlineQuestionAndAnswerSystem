@@ -8,7 +8,7 @@ public interface RegistrationService {
 	
 	void setLoginDetails(LoginDetails loginDetails);
 	void setPersonalDetails(PersonalDetails personalDetails);
-	void setFavoriteTopic(Topic favoriteTopic);
+	void setFavoriteTopic(Topic favoriteTopics);
 	void registerUser();
 
 }

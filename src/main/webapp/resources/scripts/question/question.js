@@ -22,7 +22,7 @@
 											topicHtml +
 									'</div>'+
 									'<div class="by-user">'+
-										i18nAt + ' ' + question.dateTime + ' by <a href="#">Tom Drake</a>'+
+										i18nAt + ' ' + convertDateToString(question.dateTime) + ' by <a href="#">Tom Drake</a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+

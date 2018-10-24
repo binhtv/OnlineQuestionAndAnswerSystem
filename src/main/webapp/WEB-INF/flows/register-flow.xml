@@ -8,7 +8,8 @@
 	<var name="personalDetails" class="com.codnel.domain.PersonalDetails" />
 	<var name="favoriteTopic" class="com.codnel.domain.Topic" />
 
-	<view-state id="loginDetailsView" view="views/loginDetails.jsp" model="loginDetails">
+	<view-state id="loginDetailsView" view="views/loginDetails.jsp"
+		model="loginDetails">
 		<!-- <transition on="next" to="personalDetailsView" /> -->
 		<transition on="next" to="performLoginDetailsAction" />
 		<transition on="cancel" to="exitToWelcomePage" />
@@ -19,30 +20,39 @@
 		<transition to="personalDetailsView" />
 	</action-state>
 
-	<view-state id="personalDetailsView"	view="views/personalDetails.jsp" model="personalDetails">
-			<!-- <transition on="next" to="preferenceView" /> -->
-			<transition on="next" to="performPersonalDetailsAction" />
-			<transition on="back" to="loginDetailsView" />
+	<view-state id="personalDetailsView" view="views/personalDetails.jsp"
+		model="personalDetails">
+		<!-- <transition on="next" to="preferenceView" /> -->
+		<transition on="next" to="performPersonalDetailsAction" />
+		<transition on="back" to="loginDetailsView" />
 	</view-state>
 
 	<action-state id="performPersonalDetailsAction">
-		<evaluate expression="registrationControllerHelper.addPersonalDetails(personalDetails)" />
+		<evaluate
+			expression="registrationControllerHelper.addPersonalDetails(personalDetails)" />
 		<transition to="preferenceView" />
 	</action-state>
 
-	<view-state id="preferenceView" view="views/preference.jsp" model="favoriteTopic">
-			<!-- <transition on="register" to="exitToLoginPage" /> -->
-			<transition on="register" to="performTopicAndRegisterAction" />
-			<transition on="back" to="personalDetailsView" />
-			<transition on="cancel" to="exitToWelcomePage" />
+	<view-state id="preferenceView" view="views/preference.jsp"
+		model="favoriteTopic">
+		<on-render>
+			<evaluate expression="topicServiceImpl.findAll()"
+				result="viewScope.topics" />
+		</on-render>
+		<!-- <transition on="register" to="exitToLoginPage" /> -->
+		<transition on="register" to="performTopicAndRegisterAction" />
+		<transition on="back" to="personalDetailsView" />
+		<transition on="cancel" to="exitToWelcomePage" />
 	</view-state>
-	
+
 	<action-state id="performTopicAndRegisterAction">
-		<evaluate expression="registrationControllerHelper.addFavoriteTopic(favoriteTopic)" />
-		<evaluate expression="registrationControllerHelper.registerUser()" />
-		<transition to="exitToLoginPage" />
+		<evaluate
+			expression="registrationControllerHelper.addFavoriteTopic(favoriteTopic)" />
+		<transition to="exitToLoginPage">
+			<evaluate expression="registrationControllerHelper.registerUser()" />
+		</transition>
 	</action-state>
-	
+
 	<end-state id="exitToWelcomePage" view="externalRedirect:welcome" />
 	<end-state id="exitToLoginPage" view="externalRedirect:/login" />
 

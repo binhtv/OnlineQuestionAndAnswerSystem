@@ -40,11 +40,11 @@ public class User {
     @JoinColumn(name="userid") 
 	List<Role> roles = new ArrayList<Role>();
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "user_topic")
 	private List<Topic> followingTopics;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Question> questions;
 
 	public List<Topic> getFollowingTopics() {
