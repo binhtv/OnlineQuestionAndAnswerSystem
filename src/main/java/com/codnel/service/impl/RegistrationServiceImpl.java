@@ -48,7 +48,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 		userProfile.setGender(this.personalDetails.getGender());
 		
 		Role userRole = new Role();
-		userRole.setName("ROLE_USER");
+		userRole.setRole("ROLE_USER");
 		
 		List<Topic> followingTopics = new ArrayList<Topic>();
 		followingTopics.add(favoriteTopic);

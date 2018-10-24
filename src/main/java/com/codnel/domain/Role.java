@@ -1,14 +1,10 @@
 package com.codnel.domain;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "role")
 public class Role {
@@ -17,11 +13,11 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@NotEmpty
-	private String name;
-
-//	@OneToMany
-//	private List<Permission> permissions;
+	@Column
+	private Integer userid;
+	
+  	@Column(nullable = false)
+ 	private String role;
 
 	public int getId() {
 		return id;
@@ -31,20 +27,20 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getRole() {
+		return role;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-//	public List<Permission> getPermissions() {
-//		return permissions;
-//	}
-//
-//	public void setPermissions(List<Permission> permissions) {
-//		this.permissions = permissions;
-//	}
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
 }
