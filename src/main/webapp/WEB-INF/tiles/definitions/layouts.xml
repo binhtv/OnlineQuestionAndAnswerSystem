@@ -30,12 +30,11 @@
 COMPARE WITH webstore08
  -->
 	<definition name="/question/list" extends="baseLayout">
+		<put-attribute name="title" value="question.title" />
 		<put-attribute name="body" value="/WEB-INF/views/question/list.jsp" />
 	</definition>
-	<definition name="/question/testws" extends="baseLayout">
-		<put-attribute name="body" value="/WEB-INF/views/question/testws.jsp" />
-	</definition>
  	<definition name="*" extends="baseLayout">
+ 		<put-attribute name="title" value="welcome.title" />
 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 

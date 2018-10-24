@@ -43,6 +43,15 @@
 
         .main-content {
             width: 100%;
+            .ask-a-question-btn {
+                display: block;
+                text-align: center;
+                width: 200px;
+                background: aliceblue;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccdff3;
+            }
         }
     }
 
@@ -139,7 +148,7 @@
 
                 .answer-num {
                     text-align: center;
-                    width: 30px;
+                    width: 50px;
                     color: #848d95;
                     font-size: 13px;
                 }

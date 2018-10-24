@@ -57,7 +57,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 		newUser.setUsername(this.loginDetails.getUserName());
 		newUser.setPassword(this.loginDetails.getPassword());
 		newUser.setFollowingTopics(followingTopics);
-		newUser.setProfile(userProfile);
+//		newUser.setProfile(userProfile);
 		
 		registrationRepository.save(newUser);
 	}

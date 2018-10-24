@@ -33,10 +33,8 @@ public class User {
 	
 	@NotEmpty
 	private String password;
-
-	@Valid
-	@OneToOne(cascade = CascadeType.ALL)
-	private Profile profile;
+	
+	private Boolean enabled;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="userid") 
@@ -89,12 +87,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Profile getProfile() {
-		return profile;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
-
 }
