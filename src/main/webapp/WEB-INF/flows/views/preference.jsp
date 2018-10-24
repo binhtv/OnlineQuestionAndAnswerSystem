@@ -9,22 +9,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Preferences</title>
+<link href="<c:url value="/resource/styles/app.css" />" rel="stylesheet">
 </head>
-<body>
-	<h2>Select Preference</h2>
-
-	<form:form modelAttribute="favoriteTopic" action="${flowExecutionUrl}" method="post">
+<body class="login-form">
+	<form:form modelAttribute="favoriteTopic" action="${flowExecutionUrl}" method="post" cssClass="login">
+		<h1 class="login-title">Select your favorites</h1>
 		<div id="name">
-			<label for="name"> <spring:message code="topicName" />: </label>
-			<form:select path="name" multiple="true">
+			<form:select path="name" multiple="true" cssClass="preference-topic">
 				<form:options items="${topics}" itemValue="id" itemLabel="name"/>
 			</form:select>
 		</div>
 		
 		<div class="buttons">
-			<input type="submit" name="_eventId_register" value="Register" /> 
-			<input	type="submit" name="_eventId_back" value="Back" />
-			<input	type="submit" name="_eventId_cancel" value="Cancel" />
+			<input type="submit" name="_eventId_register" value="Register" class="login-button"/> 
+			<input	type="submit" name="_eventId_back" value="Back" class="login-button cancel"/>
+			<input	type="submit" name="_eventId_cancel" value="Cancel" class="login-button cancel"/>
 		</div>
 	</form:form>
 </body>

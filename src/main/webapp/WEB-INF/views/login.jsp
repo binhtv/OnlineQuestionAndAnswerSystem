@@ -4,28 +4,20 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<h1>Please Login!</h1>
 <c:if test="${not empty error}">
-	<div style="color:red;">
+	<div style="color: red;">
 		<spring:message
 			code="AbstractUserDetailsAuthenticationProvider.badCredentials" />
 		<br />
 	</div>
 </c:if>
-<form action="<spring:url value="/login"/>" method="post">
-	<fieldset>
-		<div id="username">
-			<label for="userName"> Username: </label> <input type="text"
-				name="username" placeholder="enter your username" />
-		</div>
-		<div id="password">
-			<label for="password">Password: </label> <input type="password"
-				name="password" placeholder="enter your password" />
-		</div>
-		<div id="buttons">
-			<input type="submit" name="login" value="Login" />
-		</div>
-	</fieldset>
-	<security:csrfInput />
-</form>
+<div class="login-form">
+	<form action="<spring:url value="/login"/>" method="post" class="login">
+		<h1 class="login-title"><spring:message code="pleaseLogin"/></h1>
+			<input type="text" name="username" placeholder="<spring:message code="username" />" class="login-input" />
+			<input type="password" name="password" placeholder="<spring:message code="password" />" class="login-input" />
+			<input type="submit" name="login" value="Login" class="login-button" />
+		<security:csrfInput />
+	</form>
+</div>
 <br />

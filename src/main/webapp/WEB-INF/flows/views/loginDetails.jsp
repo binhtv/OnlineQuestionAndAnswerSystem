@@ -10,38 +10,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Details</title>
+<link href="<c:url value="/resource/styles/app.css" />" rel="stylesheet">
 </head>
-<body>
-	<h2>Enter Login Details</h2>
+<body class="login-form">
 
 	<form:form modelAttribute="loginDetails" action="${flowExecutionUrl}"
-		method="post">
+		method="post" cssClass="login">
 
-		<%-- <input type="hidden" name="_eventId" value="peformLoginDetails">
-		<input type="hidden" name="_flowExecutionKey"
-			value="${flowExecutionKey}" /> --%>
-		
-
+		<h1 class="login-title">Enter Login Detail</h1>
 		<div class="errorSummary">
-			<form:errors path="*" />
+			<form:errors path="*" cssClass="error"/>
 		</div>
 		<div id="username">
-			<label for="userName"> <spring:message code="username" />: </label>
-			<form:input path="userName" />
+			<form:input path="userName" cssClass="login-input" type="text" placeholder="User name"/>
 			<div>
-				<form:errors path="userName" />
+				<form:errors path="userName" cssClass="error"/>
 			</div>
 		</div>
 		<div id="password">
-			<label for="password"><spring:message code="password" />: </label>
-			<form:password path="password" />
+			<form:password path="password" cssClass="login-input" placeholder="Password"/>
 			<div>
-				<form:errors path="password" />
+				<form:errors path="password" cssClass="error"/>
 			</div>
 		</div>
 		<div>
-			<input type="submit" name="_eventId_next" value="Next" />
-			<input type="submit" name="_eventId_cancel" value="Cancel" />
+			<input type="submit" name="_eventId_next" value="Next" class="login-button"/>
+			<input type="submit" name="_eventId_cancel" value="Cancel" class="login-button cancel"/>
 		</div>
 		
 	</form:form>

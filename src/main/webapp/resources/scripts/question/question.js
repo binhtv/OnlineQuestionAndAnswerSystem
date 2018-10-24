@@ -10,8 +10,9 @@
 		topics.forEach((v) => {
 			topicHtml += '<div class="topic-item">' + v.name + '</div>';
 		});
-		let newQuestion = '<div class="question">'+
-							'<div class="vote-num">'+question.votes+' ' + i18nVote + '</div>'+
+		let newQuestion = '<div class="question" id="question_${question.id}">'+
+							'<a href="javascript:void(0)" class="vote-up-icon voteUpQuestion" data-qid="' + question.id + '"></a>' +
+							'<div class="vote-num"><span id="vote_' + question.id + '">'+question.votes+'</span> ' + i18nVote + '</div>'+
 							'<div class="answer-num">'+question.numOfAnswers +' ' + i18nAnswer + '</div>'+
 							'<div class="group-title">'+
 								'<div class="title">'+
@@ -22,7 +23,7 @@
 											topicHtml +
 									'</div>'+
 									'<div class="by-user">'+
-										i18nAt + ' ' + convertDateToString(question.dateTime) + ' by <a href="#">Tom Drake</a>'+
+										i18nAt + ' ' + convertDateToString(question.dateTime) + ' by <a href="#">'+ question.questioner?question.questioner.username : 'Unknown' +'</a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
@@ -83,7 +84,7 @@
 
 	// Register for events
 	$(document).ready(function (e) {
-		$('.voteUpQuestion').on('click', onClickVoteUp);
+		$('#questionList').on('click', '.voteUpQuestion', onClickVoteUp);
 	});
 
 	//----Add new answer
