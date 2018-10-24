@@ -44,7 +44,7 @@ public class Question implements Serializable  {
 	private String details;
 
 	@NotNull
-	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.MERGE )
 	private List<Topic> topics = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
