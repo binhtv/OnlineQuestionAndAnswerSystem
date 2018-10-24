@@ -41,8 +41,10 @@
 
 	var handleAnswerAdd = function (frame) {
 		let answer = JSON.parse(frame.body);
+		var element = $("#answers[data-question-id=" + answer.question.id + "] #comments");
 		console.log(answer);
-		$("#answers[data-question-id=" + answer.question.id + "] #comments").prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
+		element.prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
+		element.children().first().effect("highlight", {}, 2000);
 	};
 
 	// Handle Vote Up
@@ -121,10 +123,10 @@ function convertDateToString(timeStamp) {
 		":" +
 		time.getSeconds() +
 		" " +
-		time.getFullYear() +
-		"-" +
 		time.getMonth() +
-		"-" +
-		time.getDate();
+		"/" +
+		time.getDate() +
+		"/" +
+		time.getFullYear() ;
 	return timeAsString;
 }
