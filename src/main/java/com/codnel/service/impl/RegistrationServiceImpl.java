@@ -42,7 +42,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 		Profile userProfile = new Profile();
 		userProfile.setFirstName(this.personalDetails.getFirstName());
 		userProfile.setLastName(this.personalDetails.getLastName());
-		userProfile.setBirthDay(this.personalDetails.getBirthDate());
+//		userProfile.setBirthDay(this.personalDetails.getBirthDate());
 		userProfile.setEmail(this.personalDetails.getEmail());
 		userProfile.setGender(this.personalDetails.getGender());
 		

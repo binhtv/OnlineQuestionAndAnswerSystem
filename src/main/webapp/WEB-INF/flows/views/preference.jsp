@@ -14,9 +14,9 @@
 	<h2>Select Preference</h2>
 
 	<form:form modelAttribute="favoriteTopic" action="${flowExecutionUrl}" method="post">
-		<div id="topicName">
-			<label for="topicName"> <spring:message code="topicName" />: </label>
-			<form:select path="topicName">
+		<div id="name">
+			<label for="name"> <spring:message code="topicName" />: </label>
+			<form:select path="name">
 				<form:option label="Social" value="Social" />
 				<form:option label="Medical" value="Medical" />
 				<form:option label="Technology" value="Technology" />

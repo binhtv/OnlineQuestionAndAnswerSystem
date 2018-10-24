@@ -39,11 +39,11 @@
 			</form:select>
 		</div>
 
-		<div id="birthDate">
+		<%-- <div id="birthDate">
 			<label for="birthDate"> <spring:message code="birthDate" />: </label>
 			<form:input path="birthDate" />
 			<form:errors path="birthDate" />
-		</div>
+		</div> --%>
 		<div id="email">
 			<label for="email"> <spring:message code="email" />: </label>
 			<form:input path="email" />

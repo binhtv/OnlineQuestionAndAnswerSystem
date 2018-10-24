@@ -25,7 +25,6 @@ public class PersonalDetails implements Serializable{
 	
 	private String gender;
 	
-	@NotEmpty
 	@Past
 	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	private Date birthDate;
