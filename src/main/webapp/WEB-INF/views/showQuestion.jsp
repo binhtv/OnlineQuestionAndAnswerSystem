@@ -29,7 +29,7 @@
 
 <fieldset>
 	<legend>All Answers</legend>
-	<div id="answer_panel">
+	<div id="answers" data-question-id="${question.id}">
 	<ul id="comments">
 		<c:forEach items="${answers}" var="ans">
 			<%-- <fieldset>
