@@ -21,18 +21,18 @@
 			<form:errors path="*" />
 		</div>
 		<div id="firstName">
-			<label for="firstName"> First Name: </label>
+			<label for="firstName"><spring:message code="firstName" />: </label>
 			<form:input path="firstName" />
 			<form:errors path="firstName" />
 		</div>
 		<div id="lastName">
-			<label for="lastName"> Last Name: </label>
+			<label for="lastName"> <spring:message code="lastName" />: </label>
 			<form:input path="lastName" />
 			<form:errors path="lastName" />
 		</div>
 
 		<div id="gender">
-			<label for="gender"> Gender: </label>
+			<label for="gender"> <spring:message code="gender" />: </label>
 			<form:select path="gender">
 				<form:option label="Male" value="Male" />
 				<form:option label="Female" value="Female" />
@@ -40,12 +40,12 @@
 		</div>
 
 		<div id="birthDate">
-			<label for="birthDate"> Date of Birth: </label>
+			<label for="birthDate"> <spring:message code="birthDate" />: </label>
 			<form:input path="birthDate" />
 			<form:errors path="birthDate" />
 		</div>
 		<div id="email">
-			<label for="email"> Email: </label>
+			<label for="email"> <spring:message code="email" />: </label>
 			<form:input path="email" />
 			<form:errors path="email" />
 		</div>

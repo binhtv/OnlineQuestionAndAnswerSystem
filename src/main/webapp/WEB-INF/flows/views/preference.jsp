@@ -11,21 +11,18 @@
 <title>Preferences</title>
 </head>
 <body>
-	<h2>Select Preferences</h2>
+	<h2>Select Preference</h2>
 
 	<form:form modelAttribute="favoriteTopic" action="${flowExecutionUrl}" method="post">
 		<div id="topicName">
-			<label for="topicName"> Favorite Topic: </label>
+			<label for="topicName"> <spring:message code="topicName" />: </label>
 			<form:select path="topicName">
-				<form:option label="SQL" value="SQL" />
-				<form:option label="Java" value="Java" />
-				<form:option label="Python" value="Python" />
-				<form:option label="Swift" value="Swift" />
+				<form:option label="Social" value="Social" />
+				<form:option label="Medical" value="Medical" />
+				<form:option label="Technology" value="Technology" />
 			</form:select>
 		</div>
-		<!-- <div id="agreement">
-			<input type="checkbox" name="agreement" value="agreement" />
-		</div> -->
+		
 		<div class="buttons">
 			<input type="submit" name="_eventId_register" value="Register" /> 
 			<input	type="submit" name="_eventId_back" value="Back" />
