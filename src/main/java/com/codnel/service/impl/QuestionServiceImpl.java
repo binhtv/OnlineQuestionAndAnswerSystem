@@ -20,7 +20,7 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionRepository questionRepo;
 
 	@Override
-	public void addQuestion(Question question) {
+	public void saveQuestion(Question question) {
 		question.setDateTime(new Date());
 		questionRepo.save(question);
 	}
@@ -40,5 +40,9 @@ public class QuestionServiceImpl implements QuestionService {
 	public void addAnswer(Question question, Answer answer) {
 		question.addAnswer(answer);
 		questionRepo.save(question);
+	}
+	
+	public void updateQuestion(Question q) {
+		questionRepo.save(q);
 	}
 }

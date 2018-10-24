@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.codnel.domain.Answer;
 import com.codnel.domain.Question;
@@ -47,11 +50,11 @@ public class QuestionController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addQuestion(@ModelAttribute("question") Question question) {
-		questionService.addQuestion(question);
-		//Send message to the channel to update the question list
+		questionService.saveQuestion(question);
+		// Send message to the channel to update the question list
 		template.convertAndSend("/topic/question/add", question);
 		System.out.println("added question" + question.getId());
-		return "redirect:/question/"+question.getId();
+		return "redirect:/question/" + question.getId();
 
 	}
 
@@ -62,19 +65,15 @@ public class QuestionController {
 		return "/question/list";
 	}
 
-	// @RequestMapping(value = "/testws", method = RequestMethod.GET)
-	// @SendTo("/topic/question/add")
-	// public Question testWeb() {
-	// Question q = new Question();
-	// q.setId(1);
-	// q.setTitle("Test title");
-	// q.setDetails("This is question detail");
-	// Topic t = new Topic();
-	// t.setName("Java");
-	// q.setTopics(Arrays.asList(t));
-	// template.convertAndSend("/topic/question/add", q);
-	// return q;
-	// //template.convertAndSend("/topic/question/add", q);
-	// //return "/question/testws";
-	// }
+	@RequestMapping(value = "/voteUp/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Question voteUpQuestion(@PathVariable("id") Integer id) {
+		Question q = questionService.find(id);
+		if(q != null) {
+			q.setVotes(q.getVotes() + 1);
+			questionService.updateQuestion(q);
+		}
+		template.convertAndSend("/topic/question/voteUp", q);
+		return q;
+	}
 }
