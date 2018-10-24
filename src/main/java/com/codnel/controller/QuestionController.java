@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,9 +33,12 @@ public class QuestionController {
 
 	@Autowired
 	private SimpMessagingTemplate template;
+	
+	private Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getQuestionForm(@ModelAttribute("question") Question question, Model model) {
+		
 		model.addAttribute("allTopics", topicService.findAll());
 		return "addForm";
 	}
@@ -45,6 +49,12 @@ public class QuestionController {
 		model.addAttribute("question", question);
 		List<Answer> answers = question.getAnswers();
 		model.addAttribute("answers", answers.stream().distinct().collect(Collectors.toList()));
+		
+		if(auth!=null)
+		{
+			User user = (User)auth.getPrincipal();
+			System.out.println(user.getUsername());
+		}
 		return "showQuestion";
 	}
 
