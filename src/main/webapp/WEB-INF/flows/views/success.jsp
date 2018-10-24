@@ -7,7 +7,6 @@
 		<title>Login Successful</title>
 	</head>
 	<body>
-		<%-- <h2>Welcome ${login.userName}!</h2> --%>
 		<h2>Welcome!</h2>
 	</body>
 </html>

@@ -39,7 +39,6 @@ public class RegistrationServiceImpl implements RegistrationService{
 	}
 	
 	public void registerUser() {
-	
 		Profile userProfile = new Profile();
 		userProfile.setFirstName(this.personalDetails.getFirstName());
 		userProfile.setLastName(this.personalDetails.getLastName());
