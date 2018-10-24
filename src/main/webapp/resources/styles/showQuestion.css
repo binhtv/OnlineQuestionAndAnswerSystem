@@ -1,5 +1,5 @@
 /* comments area */
-#comments { display: block; }
+#comments { display: block; padding: 0 15px;}
 
 #comments .cmmnt, ul .cmmnt, ul ul .cmmnt { display: block; position: relative;  border-top: 1px solid #ddd; }
 

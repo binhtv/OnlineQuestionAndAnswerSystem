@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,12 @@ public class AnswerController {
 
 	@Autowired
 	AnswerService answerService;
+	
+	@Autowired
+	private SimpMessagingTemplate template;
+	
+//	@Autowired
+//	private IAuthenticationFacade authenticationFacade;
 
 //	@RequestMapping(value = "/add", method = RequestMethod.POST)
 //	public @ResponseBody Answer addAnswer(@Param("questionId") String questionId, @Param("details") String details) {
@@ -40,8 +47,10 @@ public class AnswerController {
 		Answer answer = new Answer();
 		answer.setDetails(details);
 		answer.setDateTime(new Date());
+		answer.setQuestion(question);
 		Answer saved = answerService.saveAnswer(answer);
-		questionService.addAnswer(question, saved);
+		// Send message to the channel to update the question list
+		template.convertAndSend("/topic/answer/add", saved);
 		return saved;
 	}
 

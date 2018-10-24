@@ -1,9 +1,9 @@
-(function() {
+(function () {
 	var contextRoot = "/" + window.location.pathname.split('/')[1];
 	var socket = new SockJS("/OnlineQuestionAndAnswerSystem/ws");
 	var stompClient = Stomp.over(socket);
-	
-	var handleQuestionAdd = function(frame) {
+
+	var handleQuestionAdd = function (frame) {
 		let question = JSON.parse(frame.body);
 		let topics = question.topics;
 		let topicHtml = '';
@@ -31,94 +31,102 @@
 		$('#questionList').children().first().effect("highlight", {}, 2000);
 	};
 	// Handle Vote up WS
-	var handleQuestionVoteUp = function(frame) {
+	var handleQuestionVoteUp = function (frame) {
 		let question = JSON.parse(frame.body);
 		$('#vote_' + question.id).html(question.votes);
-		if(question.votes >= 5) {
+		if (question.votes >= 5) {
 			$('#question_' + question.id).addClass('high-vote');
 		}
 	}
-	
+
+	var handleAnswerAdd = function (frame) {
+		let answer = JSON.parse(frame.body);
+		var element = $("#answers[data-question-id=" + answer.question.id + "] #comments");
+		console.log(answer);
+		element.prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
+		element.children().first().effect("highlight", {}, 2000);
+	};
+
 	// Handle Vote Up
-	var onClickVoteUp = function(e) {
+	var onClickVoteUp = function (e) {
 		let self = $(e.target);
 		let id = self.data('qid');
-		if(self.hasClass('voted')) {
+		if (self.hasClass('voted')) {
 			return;
 		}
 		$.ajax({
 			url: contextRoot + '/question/voteUp/' + id,
 			type: 'GET',
-			success: function(resp) {
+			success: function (resp) {
 				self.addClass('voted');
 			},
-			error: function(err) {
+			error: function (err) {
 				console.log(err);
 			}
 		});
 	}
-		
+
 	// Callback function to be called when stomp client is connected to server
-	var connectCallback = function() {
+	var connectCallback = function () {
 		stompClient.subscribe('/topic/question/add', handleQuestionAdd);
 		stompClient.subscribe('/topic/question/voteUp', handleQuestionVoteUp);
+		stompClient.subscribe('/topic/answer/add', handleAnswerAdd);
 	};
 
 	// Callback function to be called when stomp client could not connect to
 	// server
-	var errorCallback = function(error) {
+	var errorCallback = function (error) {
 		console.log(error);
 	};
 
 	stompClient.connect("guest", "guest", connectCallback, errorCallback);
-	
+
 	// Register for events
-	$(document).ready(function(e) {
+	$(document).ready(function (e) {
 		$('.voteUpQuestion').on('click', onClickVoteUp);
 	});
-	
 
-	
+	//----Add new answer
+	var contextRoot = "/" + window.location.pathname.split('/')[1];
+
 })();
 
 //----Add new answer
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 
 function addAnswer(questionId) {
-    // var dataToSend = JSON.stringify(serializeObject($('#add_answer_form')));
-    $.ajax({
-        url: contextRoot + "/answer/add",
-        type: 'GET',
-        data: {
-            questionId: questionId,
-            details: $("#add_answer_form").find("#answer_detail").val(),
-        },
-        dataType: "json",
-        contentType: 'application/json',
-        success: function (answer) {
-			
-			$("#answer_panel #comments").prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  '+ convertDateToString(answer.dateTime) +'</span></header><p>' + answer.details + '</p></div></li>');
+	// var dataToSend = JSON.stringify(serializeObject($('#add_answer_form')));
+	$.ajax({
+		url: contextRoot + "/answer/add",
+		type: 'GET',
+		data: {
+			questionId: questionId,
+			details: $("#add_answer_form").find("#answer_detail").val(),
+		},
+		dataType: "json",
+		contentType: 'application/json',
+		success: function (answer) {
+			// $("#answers[data-question-id=" + answer.question.id + "] #comments").prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
 
-        },
-		error: function(errorObject ){
-            console.log(errorObject);
-        }	
-    })
-	}
+		},
+		error: function (errorObject) {
+			console.log(errorObject);
+		}
+	})
+}
 
-function convertDateToString(timeStamp)
-{
-	var time = new Date(timeStamp); 
-	var timeAsString = time.getHours()
-					+ ":"
-					+ time.getMinutes()
-					+ ":"
-					+ time.getSeconds()
-					+ " "
-					+ time.getFullYear()
-					+ "-" 
-					+ time.getMonth() 
-					+ "-" 
-					+ time.getDate() ;
+function convertDateToString(timeStamp) {
+	var time = new Date(timeStamp);
+	var timeAsString = time.getHours() +
+		":" +
+		time.getMinutes() +
+		":" +
+		time.getSeconds() +
+		" " +
+		time.getMonth() +
+		"/" +
+		time.getDate() +
+		"/" +
+		time.getFullYear() ;
 	return timeAsString;
 }
