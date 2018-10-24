@@ -1,6 +1,6 @@
 .container {
     @media screen and (min-width: 768px) {
-        max-width: 730px;
+        max-width: 830px;
     }
 
     @media screen and (min-width: 1200px) {
@@ -12,13 +12,39 @@
     }
 
     @media screen and (min-width: 768px) {
-        width: 750px;
+        width: 850px;
+    }
+
+    a {
+        text-decoration: none;
+        &:visited {
+            text-decoration: none;
+            color: blue;
+        }
     }
 
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+
+    .body {
+        display: flex;
+        .left-nav {
+            width: 200px;
+            list-style-type: none;
+            li {
+                line-height: 2;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .main-content {
+            width: 100%;
+        }
+    }
 
     .header {
         padding-bottom: 20px;

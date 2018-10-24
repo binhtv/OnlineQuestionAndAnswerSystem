@@ -8,8 +8,8 @@
 <div class="question-list" id="questionList">
 	<c:forEach items="${questions}" var="question">
 		<div class="question">
-			<div class="vote-num">${question.votes} vote</div>
-			<div class="answer-num">${fn:length(question.answers)} answers</div>
+			<div class="vote-num">${question.votes} <spring:message code="question.list.vote" /></div>
+			<div class="answer-num">${fn:length(question.answers)} <spring:message code="question.list.answer" /></div>
 			<div class="group-title">
 				<div class="title">
 					<a href="${question.id}">${question.title}</a>
@@ -21,7 +21,7 @@
 						</c:forEach>					
 					</div>
 					<div class="by-user">
-						ansered x min ago by <a href="#">Tom Drake</a>
+						<spring:message code="question.list.at" /> by <a href="#">Tom Drake</a>
 					</div>
 				</div>
 			</div>

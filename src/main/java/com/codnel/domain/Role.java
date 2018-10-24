@@ -20,8 +20,8 @@ public class Role {
 	@NotEmpty
 	private String name;
 
-	@OneToMany
-	private List<Permission> permissions;
+//	@OneToMany
+//	private List<Permission> permissions;
 
 	public int getId() {
 		return id;
@@ -39,12 +39,12 @@ public class Role {
 		this.name = name;
 	}
 
-	public List<Permission> getPermissions() {
-		return permissions;
-	}
-
-	public void setPermissions(List<Permission> permissions) {
-		this.permissions = permissions;
-	}
+//	public List<Permission> getPermissions() {
+//		return permissions;
+//	}
+//
+//	public void setPermissions(List<Permission> permissions) {
+//		this.permissions = permissions;
+//	}
 
 }

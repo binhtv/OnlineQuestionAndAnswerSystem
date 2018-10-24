@@ -49,15 +49,6 @@
 			<form:input path="email" />
 			<form:errors path="email" />
 		</div>
-		<div id="favoriteTopic">
-			<label for="favoriteTopic"> Favorite Topic: </label>
-			<form:select path="favoriteTopic" >
-				<form:option label="SQL" value="sql" />
-				<form:option label="Java" value="java" />
-				<form:option label="Python" value="python" />
-				<form:option label="Swift" value="swift" />
-			</form:select>
-		</div>
 		<div>
 			<input type="submit" name="_eventId_next" value="Next" /> <input
 				type="submit" name="_eventId_back" value="Back" />
