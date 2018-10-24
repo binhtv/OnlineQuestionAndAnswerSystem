@@ -40,9 +40,10 @@ public class Answer {
 	@JoinColumn(name = "question_id")
 	private Question question;
 	
+//	@JsonIgnoreProperties("answers")
 	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
 	@JoinColumn(name = "user_id")
-	private User user;
+	private User answerer;
 	
 
 	public int getVotes() {
@@ -110,7 +111,13 @@ public class Answer {
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
-	
-	
+
+	public User getAnswerer() {
+		return answerer;
+	}
+
+	public void setAnswerer(User answerer) {
+		this.answerer = answerer;
+	}
 
 }

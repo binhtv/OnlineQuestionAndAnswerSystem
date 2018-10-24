@@ -44,7 +44,7 @@
 		let answer = JSON.parse(frame.body);
 		var element = $("#answers[data-question-id=" + answer.question.id + "] #comments");
 		console.log(answer);
-		element.prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
+		element.prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">' + answer.answerer.username +  '</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
 		element.children().first().effect("highlight", {}, 2000);
 	};
 
