@@ -23,10 +23,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "question")
 public class Question implements Serializable  {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
