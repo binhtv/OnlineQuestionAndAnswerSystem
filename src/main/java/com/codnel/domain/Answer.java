@@ -2,14 +2,20 @@ package com.codnel.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "answer")
 public class Answer {
@@ -28,6 +34,16 @@ public class Answer {
 	private boolean accepted = false;
 	
 	private int votes = 0;
+	
+	@JsonIgnoreProperties("answers")
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
+	@JoinColumn(name = "question_id")
+	private Question question;
+	
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 
 	public int getVotes() {
 		return votes;
@@ -86,5 +102,15 @@ public class Answer {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+	
+	
 
 }
