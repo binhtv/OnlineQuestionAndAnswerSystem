@@ -41,7 +41,6 @@ public class Profile {
 	@NotEmpty
 	private String email;
 
-	@NotNull
 	@Past
 	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	@Column(name = "birth_day")
