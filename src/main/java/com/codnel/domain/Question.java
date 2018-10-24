@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -52,6 +53,7 @@ public class Question implements Serializable  {
 	private int votes = 0;
 
 	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name = "question_id")
 	private List<Answer> answers = new ArrayList<>();
 
 	public int getId() {

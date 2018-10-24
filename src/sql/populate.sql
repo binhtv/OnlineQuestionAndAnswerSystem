@@ -23,7 +23,7 @@ INSERT INTO role_permission VALUES (1,1);
 -- VALUES (2,1);
 
 -- PROFILE
-INSERT INTO Profile VALUES (1, "2018/08/08", "asd@gmail.com", "abc", "def");
+INSERT INTO Profile VALUES (1, "2018/08/08", "asd@gmail.com", "abc", "male","sad");
 
 -- USER
 INSERT INTO User VALUES (NULL, "123", "abc", 1, 1);

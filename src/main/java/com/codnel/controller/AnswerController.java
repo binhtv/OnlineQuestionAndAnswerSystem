@@ -24,24 +24,25 @@ public class AnswerController {
 	@Autowired
 	AnswerService answerService;
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public @ResponseBody String addAnswer(@Param("questionId") String questionId, @Param("details") String details) {
-		Question question = questionService.find(Integer.valueOf(questionId));
-		Answer answer = new Answer();
-		answer.setDetails(details);
-		answer.setDateTime(new Date());
-		questionService.addAnswer(question, answer);
-		return "Answer Added";
-	}
+//	@RequestMapping(value = "/add", method = RequestMethod.POST)
+//	public @ResponseBody Answer addAnswer(@Param("questionId") String questionId, @Param("details") String details) {
+//		Question question = questionService.find(Integer.valueOf(questionId));
+//		Answer answer = new Answer();
+//		answer.setDetails(details);
+//		answer.setDateTime(new Date());
+//		questionService.addAnswer(question, answer);
+//		return answer;
+//	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public @ResponseBody String addAnswerGET(@Param("questionId") String questionId, @Param("details") String details) {
+	public @ResponseBody Answer addAnswerGET(@Param("questionId") String questionId, @Param("details") String details) {
 		Question question = questionService.find(Integer.valueOf(questionId));
 		Answer answer = new Answer();
 		answer.setDetails(details);
 		answer.setDateTime(new Date());
-		questionService.addAnswer(question, answer);
-		return "Answer Added";
+		Answer saved = answerService.saveAnswer(answer);
+		questionService.addAnswer(question, saved);
+		return saved;
 	}
 
 }

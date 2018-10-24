@@ -26,9 +26,11 @@
 
 <fieldset>
 	<legend>All Answers</legend>
-	<c:forEach items="${question.answers}" var="answer">
-		<fieldset>
-			${answer.details}
-		</fieldset>
-	</c:forEach>
+	<div id="answer_panel">
+		<c:forEach items="${answers}" var="ans">
+			<fieldset>
+				${ans.details}
+			</fieldset>
+		</c:forEach>
+	</div>
 </fieldset>
