@@ -27,7 +27,7 @@
 				<div class="sub-group-title">
 					<div class="topic">
 						<c:forEach items="${question.topics}" var="topic">
-							<div class="topic-item">${topic.topicName}</div>
+							<div class="topic-item">${topic.name}</div>
 						</c:forEach>					
 					</div>
 					<div class="by-user">

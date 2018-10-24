@@ -77,22 +77,28 @@
 		$('.voteUpQuestion').on('click', onClickVoteUp);
 	});
 	
-
-    function addAnswer(questionId) {
-        // var dataToSend =
-		// JSON.stringify(serializeObject($('#add_answer_form')));
-        $.ajax({
-            url: contextRoot + "/answer/add",
-            data: {
-                questionId: questionId,
-                details: $("add_answer_form").find("#answer_detail").val(),
-                dataType: "json",
-                contentType: 'application/json',
-                success: function(data){
-                    console.log(data);
-                }
-            }
-
-        })
-    }
 })();
+
+//----Add new answer
+var contextRoot = "/" + window.location.pathname.split('/')[1];
+
+function addAnswer(questionId) {
+    // var dataToSend = JSON.stringify(serializeObject($('#add_answer_form')));
+    $.ajax({
+        url: contextRoot + "/answer/add",
+        type: 'GET',
+        data: {
+            questionId: questionId,
+            details: $("#add_answer_form").find("#answer_detail").val(),
+        },
+        dataType: "json",
+        contentType: 'application/json',
+        success: function (answer) {
+            $("#answer_panel").prepend("<fieldset>" + answer.details +"</fieldset>")
+
+        },
+		error: function(errorObject ){
+            console.log(errorObject);
+        }	
+    })
+}

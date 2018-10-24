@@ -19,7 +19,7 @@ public class Topic implements Serializable{
 	private int id;
 
 	@NotEmpty
-	private String topicName;
+	private String name;
 
 	public int getId() {
 		return id;
@@ -29,12 +29,12 @@ public class Topic implements Serializable{
 		this.id = id;
 	}
 
-	public String getTopicName() {
-		return topicName;
+	public String getName() {
+		return name;
 	}
 
-	public void setTopicName(String name) {
-		this.topicName = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

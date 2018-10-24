@@ -43,8 +43,7 @@ INSERT INTO question_topic VALUES (2,3);
 
 -- ANSWER
 INSERT INTO answer VALUES (NULL, false, '2018-10-03 00:00:00' , "This is sample answer");
-
 -- QUESTION - ANSWER
-INSERT INTO question_answer  VALUES (1,1);
+-- INSERT INTO question_answer  VALUES (1,1);
 
 

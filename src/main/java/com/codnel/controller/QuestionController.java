@@ -1,6 +1,7 @@
 package com.codnel.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.codnel.domain.Answer;
 import com.codnel.domain.Question;
 import com.codnel.service.QuestionService;
 import com.codnel.service.TopicService;
@@ -41,7 +43,8 @@ public class QuestionController {
 	public String showQuestion(@PathVariable("id") int id, Model model) {
 		Question question = questionService.find(id);
 		model.addAttribute("question", question);
-		System.out.println(question.getTitle());
+		List<Answer> answers = question.getAnswers();
+		model.addAttribute("answers", answers.stream().distinct().collect(Collectors.toList()));
 		return "showQuestion";
 	}
 

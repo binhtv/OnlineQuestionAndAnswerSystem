@@ -25,9 +25,7 @@
                	authentication-failure-url="/loginfailed"/>
         <security:logout logout-success-url="/logout" 
         delete-cookies="JSESSIONID" logout-url= "/doLogout"/>
-        
-        <security:csrf disabled="true"/>
-        
+        <security:csrf disabled="true" />
  	</security:http>
 	
 
