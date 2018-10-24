@@ -16,6 +16,8 @@
 		base-package="com.codnel.config" />
 	<context:component-scan
 		base-package="com.codnel.formatter" />
+	<context:component-scan
+		base-package="com.codnel.domain" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

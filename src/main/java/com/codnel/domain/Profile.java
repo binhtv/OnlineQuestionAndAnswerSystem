@@ -40,7 +40,7 @@ public class Profile {
 
 	@NotNull
 	@Past
-	@DateTimeFormat(pattern = "MM/DD/YYY")
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	@Column(name = "birth_day")
 	private Date birthDay;
 

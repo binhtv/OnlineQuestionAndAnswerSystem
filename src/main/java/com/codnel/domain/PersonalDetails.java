@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class PersonalDetails implements Serializable{
 	private static final long serialVersionUID = 2L;
@@ -24,16 +25,14 @@ public class PersonalDetails implements Serializable{
 	
 	private String gender;
 	
-	@Past
 	@NotEmpty
+	@Past
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	private Date birthDate;
 	
 	@NotEmpty
 	@Email
 	private String email;
-	
-	@NotEmpty
-	private String favoriteTopic;
 	
 	public String getFirstName() {
 		return firstName;
@@ -65,11 +64,5 @@ public class PersonalDetails implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getFavoriteTopic() {
-		return favoriteTopic;
-	}
-	public void setFavoriteTopic(String favoriteTopic) {
-		this.favoriteTopic = favoriteTopic;
-	}
+
 }

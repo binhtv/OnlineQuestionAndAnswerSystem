@@ -28,11 +28,16 @@
 		<div id="username">
 			<label for="userName"> <spring:message code="username" />: </label>
 			<form:input path="userName" />
-			<form:errors path="userName" />
+			<div>
+				<form:errors path="userName" />
+			</div>
 		</div>
 		<div id="password">
 			<label for="password"><spring:message code="password" />: </label>
 			<form:password path="password" />
+			<div>
+				<form:errors path="password" />
+			</div>
 		</div>
 		<div>
 			<input type="submit" name="_eventId_next" value="Next" />
