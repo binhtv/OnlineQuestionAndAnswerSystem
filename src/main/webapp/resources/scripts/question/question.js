@@ -77,6 +77,8 @@
 		$('.voteUpQuestion').on('click', onClickVoteUp);
 	});
 	
+
+	
 })();
 
 //----Add new answer
@@ -94,11 +96,29 @@ function addAnswer(questionId) {
         dataType: "json",
         contentType: 'application/json',
         success: function (answer) {
-            $("#answer_panel").prepend("<fieldset>" + answer.details +"</fieldset>")
+			
+			$("#answer_panel #comments").prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  '+ convertDateToString(answer.dateTime) +'</span></header><p>' + answer.details + '</p></div></li>');
 
         },
 		error: function(errorObject ){
             console.log(errorObject);
         }	
     })
+	}
+
+function convertDateToString(timeStamp)
+{
+	var time = new Date(timeStamp); 
+	var timeAsString = time.getHours()
+					+ ":"
+					+ time.getMinutes()
+					+ ":"
+					+ time.getSeconds()
+					+ " "
+					+ time.getFullYear()
+					+ "-" 
+					+ time.getMonth() 
+					+ "-" 
+					+ time.getDate() ;
+	return timeAsString;
 }
