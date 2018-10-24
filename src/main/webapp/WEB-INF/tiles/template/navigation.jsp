@@ -9,7 +9,7 @@
 		<spring:message code="layout.navigation.latestQuestion"/></a>
 </li>
 <li>
-	<a href="<spring:url value="/topics/" />"> <spring:message code="layout.navigation.topic" /></a>
+	<a href="<spring:url value="/topics" />"> <spring:message code="layout.navigation.topic" /></a>
 </li>
 <security:authorize access="isAuthenticated()">
 	<li>
