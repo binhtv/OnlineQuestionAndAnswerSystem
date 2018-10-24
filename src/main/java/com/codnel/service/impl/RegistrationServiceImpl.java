@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import com.codnel.domain.Topic;
 import com.codnel.domain.User;
 import com.codnel.repository.ProfileRepository;
 import com.codnel.repository.RegistrationRepository;
+import com.codnel.repository.RoleRepository;
 import com.codnel.repository.TopicRepository;
 import com.codnel.service.RegistrationService;
 
@@ -30,7 +32,9 @@ public class RegistrationServiceImpl implements RegistrationService{
 	@Autowired
 	private TopicRepository topicRepo;
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+	private RoleRepository roleRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	private LoginDetails loginDetails;
 	private PersonalDetails personalDetails;
@@ -71,8 +75,11 @@ public class RegistrationServiceImpl implements RegistrationService{
 		
 		userProfile.setUser(newUser);
 		
-		registrationRepository.save(newUser);
+		User u = registrationRepository.save(newUser);
+		userRole.setUserid(u.getId());
+		roleRepository.save(userRole);
 		profileRepository.save(userProfile);
+		
 	}
 
 }

@@ -41,8 +41,18 @@
         border: 1px solid #ccdff3; }
   .container .header {
     padding-bottom: 20px;
-    border-bottom: 1px solid #e5e5e5; }
-    .container .header text-muted {
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .container .header .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .container .header .user-info .user-photo {
+        width: 30px;
+        height: 30px; }
+    .container .header .text-muted {
       color: #777; }
     .container .header h3 {
       margin-top: 0;
