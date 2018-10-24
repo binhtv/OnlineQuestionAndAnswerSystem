@@ -11,8 +11,8 @@
 			topicHtml += '<div class="topic-item">' + v.name + '</div>';
 		});
 		let newQuestion = '<div class="question">'+
-							'<div class="vote-num">'+question.votes+' vote</div>'+
-							'<div class="answer-num">'+question.numOfAnswers +' answers</div>'+
+							'<div class="vote-num">'+question.votes+' ' + i18nVote + '</div>'+
+							'<div class="answer-num">'+question.numOfAnswers +' ' + i18nAnswer + '</div>'+
 							'<div class="group-title">'+
 								'<div class="title">'+
 									'<a href="'+question.id+'">'+question.title+'</a>'+
@@ -22,7 +22,7 @@
 											topicHtml +
 									'</div>'+
 									'<div class="by-user">'+
-										'ansered x min ago by <a href="#">Tom Drake</a>'+
+										i18nAt + ' ' + question.dateTime + ' by <a href="#">Tom Drake</a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+

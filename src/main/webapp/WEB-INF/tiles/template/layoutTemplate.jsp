@@ -48,7 +48,11 @@
 		</div>
 
 	</div>
-
+	<script type="text/javascript">
+		var i18nVote="<spring:message code='question.list.vote' />";
+		var i18nAnswer="<spring:message code='question.list.answer' />";
+		var i18nAt="<spring:message code='question.list.at' />";
+	</script>
 	<script type="text/javascript"
 		src="<c:url value="/resource/scripts/lib/sockjs-0.3.min.js" />"></script>
 	<script type="text/javascript"
