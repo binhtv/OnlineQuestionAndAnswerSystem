@@ -17,24 +17,31 @@ import com.codnel.service.QuestionService;
 @Controller
 @RequestMapping("answer")
 public class AnswerController {
-	
+
 	@Autowired
 	QuestionService questionService;
-	
+
 	@Autowired
 	AnswerService answerService;
-	
-	@RequestMapping(value = "/add", method=RequestMethod.POST)
-	public @ResponseBody String addAnswer(@Param("questionId") String questionId, @Param("details") String details)
-	{
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public @ResponseBody String addAnswer(@Param("questionId") String questionId, @Param("details") String details) {
 		Question question = questionService.find(Integer.valueOf(questionId));
 		Answer answer = new Answer();
 		answer.setDetails(details);
 		answer.setDateTime(new Date());
 		questionService.addAnswer(question, answer);
-		return  "Question Added";
+		return "Answer Added";
 	}
 	
-	
-	
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public @ResponseBody String addAnswerGET(@Param("questionId") String questionId, @Param("details") String details) {
+		Question question = questionService.find(Integer.valueOf(questionId));
+		Answer answer = new Answer();
+		answer.setDetails(details);
+		answer.setDateTime(new Date());
+		questionService.addAnswer(question, answer);
+		return "Answer Added";
+	}
+
 }

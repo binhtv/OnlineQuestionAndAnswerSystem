@@ -25,8 +25,17 @@ public class Answer {
 	@NotEmpty
 	private String details;
 
-	@NotEmpty
 	private boolean accepted = false;
+	
+	private int votes = 0;
+
+	public int getVotes() {
+		return votes;
+	}
+
+	public void setVotes(int votes) {
+		this.votes = votes;
+	}
 
 	public int getId() {
 		return id;
