@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +15,22 @@
 <c:set var="title">
 	<tiles:getAsString name="title" />
 </c:set>
-<title>${title }</title>
+<title><spring:message code="${title }"/></title>
 
 </head>
 
 <body>
 	<div class="container">
 		<div class="header">
+			<h3 class="text-muted">
+				<spring:message code="layout.project.name" />
+			</h3>
+			<security:authorize access="isAuthenticated()">
+				<div class="user-info">
+					<img alt="user photo" src="<c:url value="/resource/images/user.png"/>" class="user-photo"/>
+	  				<security:authentication property="principal.username" />
+				</div>
+			</security:authorize>
 			<ul class="nav nav-pills pull-right">
 				<li>
 					<a href="<spring:url value="?language=en_US"/>"><spring:message code="lang.english" /></a>
@@ -29,9 +39,6 @@
 					<a href="<spring:url value="?language=vi_VN"/>"><spring:message code="lang.vietnamese" /></a>
 				</li>
 			</ul>
-			<h3 class="text-muted">
-				<spring:message code="layout.project.name" />
-			</h3>
 		</div>
 
 		<div class="body">
