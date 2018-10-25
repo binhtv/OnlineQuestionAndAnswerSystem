@@ -39,6 +39,7 @@ public class Question implements Serializable  {
 	private String title;
 
 	@NotEmpty
+	@Column(length = 5000) 
 	private String details;
 
 	@NotNull
