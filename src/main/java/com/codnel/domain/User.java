@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity(name = "user")
 public class User {
@@ -25,7 +24,7 @@ public class User {
 	private int id;
 
 	@NotEmpty
-	@Size(min = 5, message = "{Size.username}")
+	@Size(min = 3, message = "{Size.username}")
 	private String username;
 	
 	@NotEmpty

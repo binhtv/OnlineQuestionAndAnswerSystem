@@ -18,6 +18,8 @@
 			access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
 		<security:intercept-url pattern="/question/answer"
 			access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+		<security:intercept-url pattern="/profile/update"
+			access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
 
 		<security:form-login login-page="/login"
 			default-target-url="/" username-parameter="username"

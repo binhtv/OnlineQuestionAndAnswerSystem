@@ -12,23 +12,11 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 	</definition>
-
-<!--  [ no need unless NO default in controller JSP reference 
-      [.e.g. if controller returns "welcome" instead of "/welcome" THEN Need the following wildcard]-->
-
-<!-- 	<definition name="*" extends="baseLayout">
-		<put-attribute name="title" value="{1}.title" />
-		<put-attribute name="heading" value="{1}.heading" />
-		<put-attribute name="tagline" value="{1}.tagline" />
- 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+	
+	<definition name="/profile/update" extends="baseLayout">
+		<put-attribute name="title" value="profile.title" />
+		<put-attribute name="body" value="/WEB-INF/views/profile/update.jsp" />
 	</definition>
-	 	
- -->
- <!-- Wild Card for all  controllers...
-      /welcome accesses views folder for welcome JSP location
-     product/products accesses views/product folder for product JSP location
-COMPARE WITH webstore08
- -->
 	<definition name="/question/list" extends="baseLayout">
 		<put-attribute name="title" value="question.title" />
 		<put-attribute name="body" value="/WEB-INF/views/question/list.jsp" />

@@ -31,7 +31,7 @@
 						</c:forEach>					
 					</div>
 					<div class="by-user">
-						<spring:message code="question.list.at" /> ${question.dateTime} by <a href="#">Tom Drake</a>
+						<spring:message code="question.list.at" /> ${question.dateTime} by <a href="#">${question.questioner == null ? question.questioner.name : "Unknown"}</a>
 					</div>
 				</div>
 			</div>

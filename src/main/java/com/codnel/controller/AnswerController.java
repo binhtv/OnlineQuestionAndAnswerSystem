@@ -46,7 +46,7 @@ public class AnswerController {
 		answer.setDateTime(new Date());
 		answer.setQuestion(question);
 		
-		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		 
 		if(auth!=null && !"anonymousUser".equals(auth.getPrincipal()))
 		{

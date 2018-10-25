@@ -10,13 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity(name = "profile")
 public class Profile {
@@ -40,6 +41,9 @@ public class Profile {
 	@Email
 	@NotEmpty
 	private String email;
+	
+	@Transient
+	private MultipartFile image;
 
 	@Past
 	@DateTimeFormat(pattern = "MM/DD/YYYY")
@@ -95,5 +99,13 @@ public class Profile {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
 }

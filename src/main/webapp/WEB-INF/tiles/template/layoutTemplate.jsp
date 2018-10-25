@@ -26,10 +26,11 @@
 				<spring:message code="layout.project.name" />
 			</h3>
 			<security:authorize access="isAuthenticated()">
-				<div class="user-info">
-					<img alt="user photo" src="<c:url value="/resource/images/user.png"/>" class="user-photo"/>
+				<security:authentication var="principal" property="principal" />
+				<a href="<c:url value="/profile/update" />" class="user-info">
+					<img alt="user photo" src="<c:url value="/profile/${principal.username}.png"/>" class="user-photo" onerror="this.src='<c:url value="/resource/images/user.png"/>';"/>
 	  				<security:authentication property="principal.username" />
-				</div>
+				</a>
 			</security:authorize>
 			<ul class="nav nav-pills pull-right">
 				<li>

@@ -29,7 +29,7 @@ INSERT INTO profile(`id`, `birth_day`, `email`, `first_name`, `last_name`, `gend
 -- USER
 -- binhtv/123
 -- admin/123
-INSERT INTO user(`id`, `password`, `username`, `enabled`) VALUES (NULL, "$2a$10$S/wlXEo/APzf.Sn1cO2p4.V12EJmaw.uzrHelMvkpuahjmHWnSafe", "binhtv", TRUE);
+INSERT INTO user(`id`, `password`, `username`, `enabled`) VALUES (NULL, "$2a$10$oQRoId9L2PxcwryIT8GpS.Wy/ppj9YU.Oq9.nJdhkvWWGHPZPBzB6", "user", TRUE);
 INSERT INTO user(`id`, `password`, `username`, `enabled`) VALUES (NULL, "$2a$10$S/wlXEo/APzf.Sn1cO2p4.V12EJmaw.uzrHelMvkpuahjmHWnSafe", "admin", TRUE);
 
 -- QUESTION

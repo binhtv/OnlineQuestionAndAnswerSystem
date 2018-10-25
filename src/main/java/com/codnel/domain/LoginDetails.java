@@ -10,10 +10,10 @@ public class LoginDetails implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@NotEmpty
-	@Size(min=5, message="{Size.userName}")
+	@Size(min=3, message="{Size.userName}")
 	private String userName;
 	@NotEmpty
-	@Size(min=5, message="{Size.password}")
+	@Size(min=3, message="{Size.password}")
 	private String password;
 	public String getUserName() {
 		return userName;
