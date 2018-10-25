@@ -12,6 +12,11 @@
 <link href="<c:url value="/resource/styles/app.css" />" rel="stylesheet">
 </head>
 <body class="login-form">
+	<ul class="steps">
+	  <li>Login detail</li>
+	  <li>Personal Detail</li>
+	  <li class="active">Preferences</li>
+	</ul>
 	<form:form modelAttribute="favoriteTopic" action="${flowExecutionUrl}" method="post" cssClass="login">
 		<h1 class="login-title">Select your favorites</h1>
 		<div id="name">

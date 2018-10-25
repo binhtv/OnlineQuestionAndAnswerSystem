@@ -13,7 +13,11 @@
 <link href="<c:url value="/resource/styles/app.css" />" rel="stylesheet">
 </head>
 <body class="login-form">
-
+	<ul class="steps">
+	  <li class="active">Login detail</li>
+	  <li>Personal Detail</li>
+	  <li>Preferences</li>
+	</ul>
 	<form:form modelAttribute="loginDetails" action="${flowExecutionUrl}"
 		method="post" cssClass="login">
 
