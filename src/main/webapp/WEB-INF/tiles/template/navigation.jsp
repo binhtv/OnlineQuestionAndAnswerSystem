@@ -16,7 +16,13 @@
 		<a href="<spring:url value="/question/add" />"> <spring:message code="layout.navigation.ask" /></a>
 	</li>
 </security:authorize>
-<hr/>
+
+<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+	<li>
+		<i class="star"></i><a href="<spring:url value="/topic/add" />"> <strong><spring:message code="layout.navigation.addtopic" /></strong></a>
+	</li>
+</security:authorize>
+<hr style="margin-right: 20px;"/>
 <security:authorize access="isAnonymous()">
 	<li>
 		<a href="<spring:url value="/login" />"><spring:message code="layout.navigation.login" /></a>
