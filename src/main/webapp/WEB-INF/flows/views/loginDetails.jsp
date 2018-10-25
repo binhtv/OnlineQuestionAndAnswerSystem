@@ -23,25 +23,27 @@
 
 		<h1 class="login-title">Enter Login Detail</h1>
 		<div class="errorSummary">
-			<form:errors path="*" cssClass="error"/>
+			<form:errors path="*" cssClass="error" />
 		</div>
 		<div id="username">
-			<form:input path="userName" cssClass="login-input" type="text" placeholder="User name"/>
+			<form:input path="userName" cssClass="login-input" type="text"
+				placeholder="User name" />
 			<div>
-				<form:errors path="userName" cssClass="error"/>
+				<form:errors path="userName" cssClass="error" />
 			</div>
 		</div>
 		<div id="password">
-			<form:password path="password" cssClass="login-input" placeholder="Password"/>
+			<form:password path="password" cssClass="login-input"
+				placeholder="Password" />
 			<div>
-				<form:errors path="password" cssClass="error"/>
+				<form:errors path="password" cssClass="error" />
 			</div>
 		</div>
 		<div>
-			<input type="submit" name="_eventId_next" value="Next" class="login-button"/>
-			<input type="submit" name="_eventId_cancel" value="Cancel" class="login-button cancel"/>
+			<input type="submit" name="_eventId_next" value="Next"
+				class="login-button" /> <input type="submit" name="_eventId_cancel"
+				value="Cancel" class="login-button cancel" />
 		</div>
-		
 	</form:form>
 </body>
 </html>
