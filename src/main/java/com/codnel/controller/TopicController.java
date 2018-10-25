@@ -19,5 +19,10 @@ public class TopicController {
 		model.addAttribute("topics", topicService.findAll());
 		return "topics";
 	}
+	
+	@RequestMapping(value="/topic/add", method=RequestMethod.GET)
+	public String addTopic() {
+		return "/topic/add";
+	}
 
 }

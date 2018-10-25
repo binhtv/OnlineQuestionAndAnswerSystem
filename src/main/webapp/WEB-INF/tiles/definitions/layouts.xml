@@ -21,6 +21,10 @@
 		<put-attribute name="title" value="question.title" />
 		<put-attribute name="body" value="/WEB-INF/views/question/list.jsp" />
 	</definition>
+	<definition name="/topic/add" extends="baseLayout">
+		<put-attribute name="title" value="topic.title" />
+		<put-attribute name="body" value="/WEB-INF/views//topic/add.jsp" />
+	</definition>
  	<definition name="*" extends="baseLayout">
  		<put-attribute name="title" value="welcome.title" />
 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
