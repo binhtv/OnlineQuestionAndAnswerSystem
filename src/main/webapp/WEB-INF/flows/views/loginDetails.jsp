@@ -41,8 +41,8 @@
 		</div>
 		<div>
 			<input type="submit" name="_eventId_next" value="Next"
-				class="login-button" /> <input type="submit" name="_eventId_cancel"
-				value="Cancel" class="login-button cancel" />
+				class="login-button" /> 
+			<a href="<c:url value="/"/>" class="login-button cancel link-as-a-button">Cancel</a>
 		</div>
 	</form:form>
 </body>

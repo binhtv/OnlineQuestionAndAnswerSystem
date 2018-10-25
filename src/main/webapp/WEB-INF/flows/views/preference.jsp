@@ -23,12 +23,13 @@
 			<form:select path="name" multiple="true" cssClass="preference-topic">
 				<form:options items="${topics}" itemValue="id" itemLabel="name"/>
 			</form:select>
+			<form:errors path="name" cssClass="error"/>
 		</div>
-		
+		<br/>
 		<div class="buttons">
 			<input type="submit" name="_eventId_register" value="Register" class="login-button"/> 
 			<input	type="submit" name="_eventId_back" value="Back" class="login-button cancel"/>
-			<input	type="submit" name="_eventId_cancel" value="Cancel" class="login-button cancel"/>
+			<a href="<c:url value="/"/>" class="login-button cancel link-as-a-button">Cancel</a>
 		</div>
 	</form:form>
 </body>

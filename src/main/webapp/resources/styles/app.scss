@@ -121,6 +121,12 @@
                 background: #b5b5b5;
                 margin-top: 10px;
             }
+            &.link-as-a-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+            }
         }
 
 

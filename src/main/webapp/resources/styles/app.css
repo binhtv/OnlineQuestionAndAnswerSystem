@@ -97,6 +97,11 @@
     .login-form .login-button.cancel {
       background: #b5b5b5;
       margin-top: 10px; }
+    .login-form .login-button.link-as-a-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none; }
   .login-form .login-lost {
     text-align: center;
     margin-bottom: 0px; }
