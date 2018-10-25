@@ -40,7 +40,7 @@
 			<div id="add_answer_form">
 				<textarea class="input" id="answer_detail" name="details"></textarea>
 				<br>
-				<button class="primary-button" id="add_answer"
+				<button class="secondary-button" id="add_answer"
 					onclick="addAnswer(${question.id});">Submit</button>
 			</div>
 		</div>
