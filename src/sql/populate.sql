@@ -7,6 +7,11 @@ INSERT INTO `topic` VALUES (NULL, 'Social');
 
 INSERT INTO `topic` VALUES (NULL, 'Medical');
 
+INSERT INTO `topic` VALUES (NULL, 'Biology');
+
+INSERT INTO `topic` VALUES (NULL, 'Memes');
+
+
 -- PERMISSION
 INSERT INTO permission VALUES (NULL, "Add Question");
 
@@ -14,6 +19,13 @@ INSERT INTO permission VALUES (NULL, "Add Question");
 INSERT INTO role(`id`, `userid`, `role`) VALUES (NULL, 1, "ROLE_USER");
 
 INSERT INTO role(`id`, `userid`, `role`) VALUES (NULL, 2, "ROLE_ADMIN");
+
+INSERT INTO role(`id`, `userid`, `role`) VALUES (NULL, 3, "ROLE_USER");
+
+INSERT INTO role(`id`, `userid`, `role`) VALUES (NULL, 4, "ROLE_USER");
+
+INSERT INTO role(`id`, `userid`, `role`) VALUES (NULL, 5, "ROLE_USER");
+
 
 -- ROLE PERMISSIOn
 
@@ -55,6 +67,11 @@ INSERT INTO `question` (`id`, `date_time`, `details`, `title`, `votes`, `questio
 INSERT INTO question_topic VALUES (1,1);
 INSERT INTO question_topic VALUES (1,2);
 INSERT INTO question_topic VALUES (2,3);
+INSERT INTO question_topic VALUES (3,1);
+INSERT INTO question_topic VALUES (4,5);
+INSERT INTO question_topic VALUES (5,3);
+INSERT INTO question_topic VALUES (6,4);
+INSERT INTO question_topic VALUES (7,3);
 
 -- ANSWER
 -- INSERT INTO answer VALUES (NULL, false, '2018-10-03 00:00:00' , "This is sample answer");
