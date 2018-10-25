@@ -4,21 +4,30 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<fieldset>
-	<legend>Add a Question</legend>
-	<form:form modelAttribute="question" action="add" method="POST">
-		<p>
-			Title: <form:input path="title"/>
-		</p>
-		<p>
-			Details: <form:textarea  path="details"/>
-		</p>
-		<p>
-			Topic: 
-			<form:select path="topics" multiple="true" items="${allTopics}"  itemLabel="name" itemValue="id">
-			</form:select>
-		</p>
-		
-		<input type="submit" value="Add Question">
-	</form:form>
-</fieldset>
+<link href="<c:url value="/resource/styles/showQuestion.css" />"
+	rel="stylesheet">
+
+<div class="main-container">
+	<div class="section-row">
+		<div class="section-title">
+			<h3 class="title">Ask a Question</h3>
+		</div>
+	
+		<form:form modelAttribute="question" action="add" method="POST">
+			<p>
+				<form:input class="input text" placeholder="Title" path="title" />
+			</p>
+			<p>
+				<form:textarea class="input" placeholder="Details" path="details" />
+			</p>
+			<p>
+				<!-- Topic: -->
+				<form:select class="input multiselect" path="topics" multiple="true" items="${allTopics}"
+					itemLabel="name" itemValue="id">
+				</form:select>
+			</p>
+
+			<input type="submit" class="primary-button"  value="Add Question">
+		</form:form>
+	</div>
+</div>

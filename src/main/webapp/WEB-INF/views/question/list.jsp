@@ -4,6 +4,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
  
 <div class="question-list" id="questionList">
 	<c:forEach items="${questions}" var="question">
@@ -31,7 +32,9 @@
 						</c:forEach>					
 					</div>
 					<div class="by-user">
-						<spring:message code="question.list.at" /> ${question.dateTime} by <a href="#">${question.questioner == null ? question.questioner.name : "Unknown"}</a>
+						<spring:message code="question.list.at" /> 
+						<fmt:formatDate pattern = "HH:mm:ss MM/dd/yyyy" 
+         value = "${question.dateTime}" /> by <a href="#">${question.questioner != null ? question.questioner.username : "Unknown"}</a>
 					</div>
 				</div>
 			</div>

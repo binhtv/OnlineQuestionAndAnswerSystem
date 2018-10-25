@@ -39,13 +39,14 @@ public class Question implements Serializable  {
 	private String title;
 
 	@NotEmpty
+	@Column(length = 5000) 
 	private String details;
 
 	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.MERGE )
 	private List<Topic> topics = new ArrayList<>();
 
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
 	private User questioner=null;
 
 	private int votes = 0;

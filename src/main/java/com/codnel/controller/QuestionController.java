@@ -17,6 +17,7 @@ import com.codnel.domain.Answer;
 import com.codnel.domain.Question;
 import com.codnel.service.QuestionService;
 import com.codnel.service.TopicService;
+import com.codnel.service.UserService;
 
 @Controller
 @RequestMapping("question")
@@ -27,6 +28,9 @@ public class QuestionController {
 
 	@Autowired
 	TopicService topicService;
+	
+	@Autowired
+	UserService userService;
 
 	@Autowired
 	private SimpMessagingTemplate template;
@@ -49,6 +53,14 @@ public class QuestionController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addQuestion(@ModelAttribute("question") Question question) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		 
+		if(auth!=null && !"anonymousUser".equals(auth.getPrincipal()))
+		{
+			User user = (User)auth.getPrincipal();
+			com.codnel.domain.User questioner = userService.findFromUsername(user.getUsername());
+			question.setQuestioner(questioner);;
+		}
 		questionService.saveQuestion(question);
 		// Send message to the channel to update the question list
 		template.convertAndSend("/topic/question/add", question);

@@ -29,6 +29,7 @@ public class Answer {
 	private Date dateTime;
 
 	@NotEmpty
+	@Column(length = 5000) 
 	private String details;
 
 	private boolean accepted = false;

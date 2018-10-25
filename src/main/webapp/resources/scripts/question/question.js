@@ -44,7 +44,9 @@
 		let answer = JSON.parse(frame.body);
 		var element = $("#answers[data-question-id=" + answer.question.id + "] #comments");
 		console.log(answer);
-		element.prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">' + answer.answerer.username +  '</a> - <span class="pubdate"> at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
+		element.prepend('<div class="media"><div class="media-left"><div class="blank-profile avatar '+ answer.answerer.username.charAt(0) +'">'+ answer.answerer.username.charAt(0) +'</div></div><div class="media-body"style="overflow: hidden; zoom: 1; display: table-cell; vertical-align: top;"><div class="media-heading"><h4>'+ answer.answerer.username +'</h4><span class="time">- ' + convertDateToString(answer.dateTime) + '</span></div><p>' + answer.details + '</p></div></div>');
+
+		// element.prepend('<div class="media"><div class="media-left"> <img class="media-object hoverZoomLink" src="https://colorlib.com/preview/theme/callie/img/avatar-3.jpg" alt=""></div><div class="media-body" style="overflow: hidden; zoom: 1; display: table-cell; vertical-align: top;"><div class="media-heading"><h4>' + answer.answerer.username +  '</h4> <span class="time">- ' + convertDateToString(answer.dateTime) + '</span></div><p>' + answer.details + '</p></div></div>');
 		element.children().first().effect("highlight", {}, 2000);
 	};
 
