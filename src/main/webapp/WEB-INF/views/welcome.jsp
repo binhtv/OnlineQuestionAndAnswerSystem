@@ -12,6 +12,11 @@
 		<a href="<spring:url value="/question/list" />">
 			<spring:message code="layout.navigation.latestQuestion"/>
 		</a>
+		<p><spring:message code="welcom.sample.acc"/></p>
+		<ul>
+			<li>ROLE_ADMIN: admin/admin</li>
+			<li>ROLE_USER: user/user</li>
+		</ul>
 	</div>
 </security:authorize>
 <security:authorize access="isAuthenticated()">

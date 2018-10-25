@@ -55,6 +55,8 @@
 
 	<mvc:resources location="/resources/"
 		mapping="/resource/**" />
+	<mvc:resources location="/uploads/"
+		mapping="/profile/**" />
 
 
 	<mvc:interceptors>
