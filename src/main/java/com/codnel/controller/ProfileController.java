@@ -61,10 +61,11 @@ public class ProfileController {
 		if (profilePic != null && !profilePic.isEmpty()) {
 			try {
 				profilePic.transferTo(new File(rootDirectory + "/uploads/" + u.getUsername() + ".png"));
-				p.setImage(profile.getImage());
-				profileService.saveProfile(p);
+//				p.setImage(profile.getImage());
+//				profileService.saveProfile(p);
 				redirectAttrs.addFlashAttribute("p_success", "Profile image is updated");
 			} catch (Exception e) {
+//				e.printStackTrace();
 				redirectAttrs.addFlashAttribute("p_error", "Profile image cannot be saved");
 			}
 		} else {

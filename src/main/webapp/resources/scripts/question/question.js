@@ -23,7 +23,7 @@
 											topicHtml +
 									'</div>'+
 									'<div class="by-user">'+
-										i18nAt + ' ' + convertDateToString(question.dateTime) + ' by <a href="#">'+ question.questioner?question.questioner.username : 'Unknown' +'</a>'+
+										i18nAt + ' ' + convertDateToString(question.dateTime) + ' by <a href="#">'+ (question.questioner?question.questioner.username : 'Unknown') +'</a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
@@ -35,7 +35,7 @@
 	var handleQuestionVoteUp = function (frame) {
 		let question = JSON.parse(frame.body);
 		$('#vote_' + question.id).html(question.votes);
-		if (question.votes >= 5) {
+		if (question.votes >= 3) {
 			$('#question_' + question.id).addClass('high-vote');
 		}
 	}
@@ -46,7 +46,6 @@
 		console.log(answer);
 		element.prepend('<div class="media"><div class="media-left"><div class="blank-profile avatar '+ answer.answerer.username.charAt(0) +'">'+ answer.answerer.username.charAt(0) +'</div></div><div class="media-body"style="overflow: hidden; zoom: 1; display: table-cell; vertical-align: top;"><div class="media-heading"><h4>'+ answer.answerer.username +'</h4><span class="time">- ' + convertDateToString(answer.dateTime) + '</span></div><p>' + answer.details + '</p></div></div>');
 
-		// element.prepend('<div class="media"><div class="media-left"> <img class="media-object hoverZoomLink" src="https://colorlib.com/preview/theme/callie/img/avatar-3.jpg" alt=""></div><div class="media-body" style="overflow: hidden; zoom: 1; display: table-cell; vertical-align: top;"><div class="media-heading"><h4>' + answer.answerer.username +  '</h4> <span class="time">- ' + convertDateToString(answer.dateTime) + '</span></div><p>' + answer.details + '</p></div></div>');
 		element.children().first().effect("highlight", {}, 2000);
 	};
 
@@ -98,7 +97,6 @@
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 
 function addAnswer(questionId) {
-	// var dataToSend = JSON.stringify(serializeObject($('#add_answer_form')));
 	$.ajax({
 		url: contextRoot + "/answer/add",
 		type: 'GET',
@@ -109,7 +107,6 @@ function addAnswer(questionId) {
 		dataType: "json",
 		contentType: 'application/json',
 		success: function (answer) {
-			// $("#answers[data-question-id=" + answer.question.id + "] #comments").prepend('<li class="cmmnt"><div class="cmmnt-content"><header><a href="javascript:void(0);" class="userlink">Pikabob</a> - <span class="pubdate"> answered at  ' + convertDateToString(answer.dateTime) + '</span></header><p>' + answer.details + '</p></div></li>');
 
 		},
 		error: function (errorObject) {

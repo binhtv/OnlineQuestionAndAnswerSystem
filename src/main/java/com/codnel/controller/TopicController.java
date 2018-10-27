@@ -10,17 +10,17 @@ import com.codnel.service.TopicService;
 
 @Controller
 public class TopicController {
-	
+
 	@Autowired
 	TopicService topicService;
-	
-	@RequestMapping(value="/topics", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/topics", method = RequestMethod.GET)
 	public String showTopics(Model model) {
 		model.addAttribute("topics", topicService.findAll());
 		return "topics";
 	}
-	
-	@RequestMapping(value="/topic/add", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/topic/add", method = RequestMethod.GET)
 	public String addTopic() {
 		return "/topic/add";
 	}

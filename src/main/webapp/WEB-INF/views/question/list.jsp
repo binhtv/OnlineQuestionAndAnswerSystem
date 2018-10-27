@@ -9,7 +9,7 @@
 <div class="question-list" id="questionList">
 	<c:forEach items="${questions}" var="question">
 		<c:choose>
-			<c:when test="${question.votes >= 5}">
+			<c:when test="${question.votes >= 3}">
 				<c:set var="highVoteClass" value="high-vote"/>
 			</c:when>
 			<c:otherwise>

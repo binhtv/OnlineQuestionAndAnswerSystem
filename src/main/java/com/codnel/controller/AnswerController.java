@@ -35,9 +35,6 @@ public class AnswerController {
 	@Autowired
 	private SimpMessagingTemplate template;
 	
-	private Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	
-	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public @ResponseBody Answer addAnswerGET(@Param("questionId") String questionId, @Param("details") String details) {
 		Question question = questionService.find(Integer.valueOf(questionId));

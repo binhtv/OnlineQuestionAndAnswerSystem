@@ -1,7 +1,5 @@
 package com.codnel.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +7,6 @@ import com.codnel.domain.LoginDetails;
 import com.codnel.domain.PersonalDetails;
 import com.codnel.domain.Topic;
 import com.codnel.service.RegistrationService;
-import com.codnel.service.TopicService;
 
 @Component(value = "registrationControllerHelper")
 public class RegistrationControllerHelper {

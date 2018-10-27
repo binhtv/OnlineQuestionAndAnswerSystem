@@ -31,7 +31,7 @@ public class QuestionController {
 
 	@Autowired
 	TopicService topicService;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -40,7 +40,7 @@ public class QuestionController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getQuestionForm(@ModelAttribute("question") Question question, Model model) {
-		
+
 		model.addAttribute("allTopics", topicService.findAll());
 		return "addForm";
 	}
@@ -57,12 +57,12 @@ public class QuestionController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addQuestion(@ModelAttribute("question") Question question) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		 
-		if(auth!=null && !"anonymousUser".equals(auth.getPrincipal()))
-		{
-			User user = (User)auth.getPrincipal();
+
+		if (auth != null && !"anonymousUser".equals(auth.getPrincipal())) {
+			User user = (User) auth.getPrincipal();
 			com.codnel.domain.User questioner = userService.findFromUsername(user.getUsername());
-			question.setQuestioner(questioner);;
+			question.setQuestioner(questioner);
+			;
 		}
 		questionService.saveQuestion(question);
 		// Send message to the channel to update the question list
@@ -83,7 +83,7 @@ public class QuestionController {
 	@ResponseBody
 	public Question voteUpQuestion(@PathVariable("id") Integer id) {
 		Question q = questionService.find(id);
-		if(q != null) {
+		if (q != null) {
 			q.setVotes(q.getVotes() + 1);
 			questionService.updateQuestion(q);
 		}

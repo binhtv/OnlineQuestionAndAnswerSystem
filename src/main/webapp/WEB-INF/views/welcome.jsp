@@ -15,7 +15,15 @@
 		<p><spring:message code="welcom.sample.acc"/></p>
 		<ul>
 			<li>ROLE_ADMIN: admin/admin</li>
-			<li>ROLE_USER: user/user</li>
+			<li>ROLE_USER: </li>
+			<li>
+				<ul>
+					<li>user/user</li>
+					<li>dawit/user</li>
+					<li>daniel/user</li>
+					<li>benz/user</li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </security:authorize>
