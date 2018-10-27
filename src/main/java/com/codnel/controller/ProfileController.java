@@ -1,6 +1,7 @@
 package com.codnel.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.servlet.ServletContext;
 
@@ -36,7 +37,8 @@ public class ProfileController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String saveProfile(@ModelAttribute("profile") Profile profile, RedirectAttributes redirectAttrs) {
+	public String saveProfile(@ModelAttribute("profile") Profile profile, 
+							  RedirectAttributes redirectAttrs) throws FileNotFoundException, Exception {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -56,6 +58,7 @@ public class ProfileController {
 		System.out.println(profilePic.getContentType());
 
 		String rootDirectory = servletContext.getRealPath("/");
+		System.out.println(rootDirectory);
 
 		// isEmpty means file exists BUT NO Content
 		if (profilePic != null && !profilePic.isEmpty()) {
@@ -67,9 +70,15 @@ public class ProfileController {
 			} catch (Exception e) {
 //				e.printStackTrace();
 				redirectAttrs.addFlashAttribute("p_error", "Profile image cannot be saved");
+				throw new FileNotFoundException(
+						"Profile image cannot be saved: " + profilePic.getOriginalFilename()
+				);
 			}
 		} else {
 			redirectAttrs.addFlashAttribute("p_error", "Profile image is empty");
+			throw new Exception(
+					"Profile image is empty: " + profilePic.getOriginalFilename()
+			);
 		}
 		
 		return "redirect:/profile/update";

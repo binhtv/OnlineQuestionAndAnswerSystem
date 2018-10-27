@@ -39,6 +39,9 @@
 				<li>
 					<a href="<spring:url value="?language=vi_VN"/>"><spring:message code="lang.vietnamese" /></a>
 				</li>
+				<li>
+					<a href="<spring:url value="?language=am_ET"/>"><spring:message code="lang.amharic" /></a>
+				</li>
 			</ul>
 		</div>
 
